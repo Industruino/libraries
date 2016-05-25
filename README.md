@@ -1,8 +1,8 @@
 # Industruino libraries
 Arduino libraries to use with Industruino products
-* UC1701 
-* EthernetIndustruino
-* Indio
+* [UC1701](#uc1701)
+* [EthernetIndustruino](#ethernetindustruino)
+* [Indio](#indio)
 
 # UC1701
 For using the Industruino LCD, there are 2 options: 
