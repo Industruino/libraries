@@ -1,2 +1,2 @@
-# libraries
-libraries to use with Industruino products
+# Industruino libraries
+Arduino libraries to use with Industruino products
