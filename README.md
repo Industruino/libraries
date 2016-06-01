@@ -7,6 +7,7 @@ Arduino libraries to use with Industruino products
 # UC1701
 For using the Industruino LCD, there are 2 options: 
 * the UC1701 library (available above): easy to use, relatively small (it is also used in the Industruino pre-installed demo sketches). it is largely compatible with the popular PCD8544 (Nokia screens). familiar syntax:
+
   lcd.begin();
   lcd.clear();
   lcd.setCursor(1, 1);
