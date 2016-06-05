@@ -19,4 +19,19 @@ lcd.print("hello Industruino!");
 If you are using the Industruino Ethernet module, you will need this library which is based on the standard Arduino Ethernet library.
 
 # Indio
-If you are using the Industruino IND.I/O product, you will need this library to access the I/O.
+If you are using the Industruino IND.I/O product, you will need this library to access the I/O channels. The pins on the IDC expansion connector, the backlight pin, and the membrane panel buttons pin(s) should still be accessed in the usual way, not using the Indio library; the Indio library is only for the external I/O channels available on the green screw connectors.
+DIGITAL I/O
+Configuration:
+```
+Indio.digitalMode(1,INPUT);  // Set CH1 as an input
+Indio.digitalMode(7,OUTPUT);  // Set CH7 as an output
+```
+Read/write:
+```
+Indio.digitalRead(1);
+Indio.digitalWrite(7,LOW); // Set CH7 to low (0V)
+```
+ANALOG INPUT
+ANALOG OUTPUT
+
+
