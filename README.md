@@ -19,7 +19,13 @@ lcd.print("hello Industruino!");
 If you are using the Industruino Ethernet module, you will need this library which is based on the standard Arduino Ethernet library.
 
 # Indio
-If you are using the Industruino IND.I/O product, you will need this library to access the I/O channels. The pins on the IDC expansion connector, the backlight pin, and the membrane panel buttons pin(s) should still be accessed in the usual way, not using the Indio library; the Indio library is only for the external I/O channels available on the green screw connectors.  
+If you are using the Industruino IND.I/O product, you will need this library to access the I/O channels. The pins on the IDC expansion connector, the backlight pin, and the membrane panel buttons pin(s) should still be accessed in the usual way, not using the Indio library; the Indio library is only for the external I/O channels available on the green screw connectors.
+
+The Indio board uses an I2C expander for the I/O channels so we also need the Wire library.
+```
+#include <Indio.h>
+#include <Wire.h>
+```
 
 ### DIGITAL I/O
 
@@ -80,6 +86,10 @@ Indio.analogWrite(1, 10.50, false); //Set CH1 to 10.5mA ("false" will not write 
 Indio.AnalogWrite(1, 75, true);     //Set CH1 to 75% (approx 16mA).
 Indio.AnalogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 10.5mA).
 ```
+
+### CALIBRATION
+
+Please find the calibration data array inside the Indio.cpp library file, together with an explanation on how to perform the calibration. The library is preloaded with calibration data but characteristics are board specific thus reading with standard cal. data might be off.
 
 
 
