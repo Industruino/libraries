@@ -21,7 +21,7 @@ If you are using the Industruino Ethernet module, you will need this library whi
 # Indio
 If you are using the Industruino IND.I/O product, you will need this library to access the I/O channels. The pins on the IDC expansion connector, the backlight pin, and the membrane panel buttons pin(s) should still be accessed in the usual way, not using the Indio library; the Indio library is only for the external I/O channels available on the green screw connectors.  
 
-DIGITAL I/O
+### DIGITAL I/O
 
 Configuration:
 ```
@@ -34,7 +34,7 @@ Indio.digitalRead(1);             // Read CH1
 Indio.digitalWrite(7,LOW);        // Set CH7 to low (0V)
 ```
 
-ANALOG INPUT
+### ANALOG INPUT
 
 Configuration of resolution:
 ```
@@ -58,7 +58,7 @@ Read:
 Indio.analogRead(1);              //Read Analog-In CH1 (output depending on selected mode as above)
 ```
 
-ANALOG OUTPUT
+### ANALOG OUTPUT
 
 Configuration of output mode:
 ```
