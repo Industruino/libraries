@@ -14,7 +14,10 @@ lcd.setCursor(1, 1);
 lcd.print("hello Industruino!");
 ```
  
-* the [U8G](https://github.com/olikraus/u8glib) library: a popular display library with many fonts and graphics, consuming more memory
+* the [U8G](https://github.com/olikraus/u8glib) library: a popular display library with many fonts and graphics, consuming more memory. you can use this constructor:
+```
+U8GLIB_MINI12864 u8g(21, 20, 19, 22);	// SPI Com: SCK = 21, MOSI = 20, CS = 19, A0 = 22
+```
 
 # EthernetIndustruino
 If you are using the Industruino Ethernet module, you will need this library which is based on the standard Arduino Ethernet library.
