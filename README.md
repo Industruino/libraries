@@ -5,15 +5,16 @@ Arduino libraries to use with Industruino products
 * [Indio](#indio)
 
 # UC1701
-For using the Industruino LCD, there are 2 options: 
-* the UC1701 library (available above): easy to use, relatively small (it is also used in the Industruino pre-installed demo sketches). it is largely compatible with the popular PCD8544 (Nokia screens). familiar syntax:  
+The Industruino LCD is connected over SPI to the pins D19,20,21,22 (and the backlight to D13 on 32u4 boards and D26 on 1286 boards). We suggest you use either of these 2 libraries:
+* our customised UC1701 library (available in this repository): easy to use, relatively small (it is also used in the Industruino pre-installed demo sketches). it is largely compatible with the popular PCD8544 (Nokia screens). familiar syntax:  
 ```
 lcd.begin();  
 lcd.clear();  
 lcd.setCursor(1, 1);  
 lcd.print("hello Industruino!");
 ```
-* the U8G library: a popular display library with many fonts and graphics, consuming more memory
+ 
+* the [U8G](https://github.com/olikraus/u8glib) library: a popular display library with many fonts and graphics, consuming more memory
 
 # EthernetIndustruino
 If you are using the Industruino Ethernet module, you will need this library which is based on the standard Arduino Ethernet library.
