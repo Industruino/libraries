@@ -96,6 +96,72 @@ Indio.AnalogWrite(1, 75, true);     //Set CH1 to 75% (approx 16mA).
 Indio.AnalogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 10.5mA).
 ```
 
+### INTERRUPTS
+
+For using interrupts on the digital channels, please note the following. The interrupt pin of the expander on the 12/24V digital side is connected to pin D8 (PCINT 4) of the microcontroller. If more than 1 channel needs to be detected by the interrupt a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
+
+This code example shows the incoming frequency on the LCD display (tested with 24V square wave at 10Khz):
+```
+#include <Indio.h>
+#include <Class_define.h>
+#include <Wire.h>
+
+#include <UC1701.h>
+static UC1701 lcd;
+
+volatile int fallingEdge = 0;
+volatile int risingEdge = 1;
+
+long previousMicros = 0;     
+long pulseWidth = 0;           // interval at which to blink (milliseconds)
+long frequency = 0;
+
+int pulseFlag = 0;
+
+void setup() {
+  
+  Serial.begin(9600); 
+  
+  Indio.digitalMode(1,INPUT);  // Set CH1 as an input
+   Indio.digitalMode(8,OUTPUT);  // Set CH7 as an output
+   
+      Indio.digitalWrite(8,LOW); // Set CH8 to high (24V, or whatever your Vin voltage).
+
+    lcd.begin(); //enable LCD
+    // Enable Pin Change Interrupt 6. 
+    PCMSK0 = (1 << PCINT4);
+    PCICR = (1 << PCIE0);
+ 
+    // Global Interrupt Enable
+   sei();    
+}
+
+
+ISR (PCINT0_vect)
+{    
+ unsigned long currentMicros = micros();  
+  
+  if (risingEdge == 1){
+     risingEdge = 0; 
+  }
+  
+  else{
+     risingEdge = 1;
+    pulseWidth = currentMicros - previousMicros;
+    previousMicros = currentMicros;
+  }
+}
+
+void loop() { 
+    frequency = (1000000 / pulseWidth);
+    lcd.setCursor(0, 0);
+    lcd.print("      ");
+    lcd.setCursor(0, 0);
+    lcd.print(frequency);
+    delay(500);
+}
+```
+
 ### CALIBRATION
 
 Please find the calibration data array inside the Indio.cpp library file, together with an explanation on how to perform the calibration. The library is preloaded with calibration data but characteristics are board specific thus reading with standard cal. data might be off.
