@@ -20,7 +20,12 @@ U8GLIB_MINI12864 u8g(21, 20, 19, 22);	// SPI Com: SCK = 21, MOSI = 20, CS = 19, 
 ```
 
 # EthernetIndustruino
-If you are using the Industruino Ethernet module, you will need this library which is based on the standard Arduino Ethernet library.
+If you are using the Industruino Ethernet module, you will need this library which is based on the standard Arduino Ethernet library. The Ethernet module is connected over SPI, so we also need the SPI library.
+```
+#include <SPI.h>
+#include <EthernetIndustruino.h>
+```
+The Ethernet module also includes FRAM; see the example in the library on how to use this.
 
 # Indio
 If you are using the Industruino IND.I/O product, you will need this library to access the I/O channels. The pins on the IDC expansion connector, the backlight pin, and the membrane panel buttons pin(s) should still be accessed in the usual way, not using the Indio library; the Indio library is only for the external I/O channels available on the green screw connectors.
