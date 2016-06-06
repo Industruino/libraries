@@ -100,7 +100,7 @@ Indio.AnalogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 
 
 For using interrupts on the digital channels, please note the following. The interrupt pin of the expander on the 12/24V digital side is connected to pin D8 (PCINT 4) of the 32u4 topboard. This pin will trigger when a change on any of the 8 input or outputs occurs. If more than 1 channel needs to be detected by the interrupt, a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
 
-This code example shows a counter on the LCD for each rising edge on CH1 (without debounce).
+This code example (for 32u4 topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce).
 ```
 #include <Indio.h>
 #include <Wire.h>
