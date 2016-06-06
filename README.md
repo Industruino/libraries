@@ -100,65 +100,49 @@ Indio.AnalogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 
 
 For using interrupts on the digital channels, please note the following. The interrupt pin of the expander on the 12/24V digital side is connected to pin D8 (PCINT 4) of the 32u4 topboard. This pin will trigger when a change on any of the 8 input or outputs occurs. If more than 1 channel needs to be detected by the interrupt, a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
 
-This code example shows the incoming frequency on the LCD display (tested with 24V square wave at 10Khz):
+This code example shows a counter on the LCD for each rising edge on CH1 (without debounce).
 ```
 #include <Indio.h>
-#include <Class_define.h>
 #include <Wire.h>
 
 #include <UC1701.h>
 static UC1701 lcd;
 
-volatile int fallingEdge = 0;
 volatile int risingEdge = 1;
-
-long previousMicros = 0;     
-long pulseWidth = 0;           // interval at which to blink (milliseconds)
-long frequency = 0;
-
-int pulseFlag = 0;
+volatile int counter = 0;
 
 void setup() {
-  
-  Serial.begin(9600); 
-  
-  Indio.digitalMode(1,INPUT);  // Set CH1 as an input
-   Indio.digitalMode(8,OUTPUT);  // Set CH7 as an output
-   
-      Indio.digitalWrite(8,LOW); // Set CH8 to high (24V, or whatever your Vin voltage).
 
-    lcd.begin(); //enable LCD
-    // Enable Pin Change Interrupt 6. 
-    PCMSK0 = (1 << PCINT4);
-    PCICR = (1 << PCIE0);
- 
-    // Global Interrupt Enable
-   sei();    
+  Serial.begin(9600);
+  lcd.begin();
+  
+  Indio.digitalMode(1, INPUT); // Set CH1 as an input
+
+  // Enable Pin Change Interrupt
+  PCMSK0 = (1 << PCINT4);
+  PCICR = (1 << PCIE0);
+
+  // Global Interrupt Enable
+  sei();
 }
-
 
 ISR (PCINT0_vect)
-{    
- unsigned long currentMicros = micros();  
-  
-  if (risingEdge == 1){
-     risingEdge = 0; 
+{
+  if (risingEdge == 1) {
+    risingEdge = 0;
+    Serial.println("trigger");
+    counter++;
   }
-  
-  else{
-     risingEdge = 1;
-    pulseWidth = currentMicros - previousMicros;
-    previousMicros = currentMicros;
+
+  else {
+    risingEdge = 1;
   }
 }
 
-void loop() { 
-    frequency = (1000000 / pulseWidth);
-    lcd.setCursor(0, 0);
-    lcd.print("      ");
-    lcd.setCursor(0, 0);
-    lcd.print(frequency);
-    delay(500);
+void loop() {
+  lcd.setCursor(1,3);
+  lcd.print(counter);
+  delay(100);
 }
 ```
 
