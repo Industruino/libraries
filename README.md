@@ -7,6 +7,7 @@ Arduino libraries to use with Industruino products
   * [analog input](#analog-input)
   * [analog output](#analog-output)
   * [interrupts](#interrupts)
+  * [calibration](#calibration)
 
 # UC1701
 The Industruino LCD is connected over SPI to the pins D19,20,21,22 (and the backlight to D13 on 32u4 boards and D26 on 1286 boards). We suggest you use either of these 2 libraries:
