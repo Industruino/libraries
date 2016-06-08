@@ -3,7 +3,7 @@ Arduino libraries to use with Industruino products
 * [UC1701](#uc1701)
 * [EthernetIndustruino](#ethernetindustruino)
 * [Indio](#indio)
-  * [digital I/O](#digital-i/o) 
+  * [digital I/O](#digital-io) 
   * [analog input](#analog-input)
   * [analog output](#analog-output)
   * [interrupts](#interrupts)
@@ -40,7 +40,7 @@ The Indio board uses an I2C expander for the I/O channels so we also need the Wi
 #include <Wire.h>
 ```
 
-(### DIGITAL-I/O) 
+### DIGITAL IO 
 
 Configuration:
 ```
