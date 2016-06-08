@@ -124,8 +124,8 @@ void setup() {
 
   Serial.begin(9600);
   lcd.begin();
-  
-  Indio.digitalWrite(1, LOW);  // Clear CH1 to LOW
+  Indio.digitalMode(1, OUTPUT); //  Clear CH1 to LOW
+  Indio.digitalWrite(1, LOW); 
   Indio.digitalMode(1, INPUT); // Set CH1 as an input
 
   // Enable Pin Change Interrupt
@@ -174,8 +174,8 @@ void setup() {
 
   Serial.begin(9600);
   lcd.begin();
-
-  Indio.digitalWrite(1, LOW);  // Clear CH1 to LOW
+  Indio.digitalMode(1, OUTPUT); //  Clear CH1 to LOW
+  Indio.digitalWrite(1, LOW);  // 
   Indio.digitalMode(1, INPUT); // Set CH1 as an input
 
   attachInterrupt(7, count, CHANGE);       // INT7 attached to the interrupt of the expander
