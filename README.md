@@ -6,6 +6,7 @@ Arduino libraries to use with Industruino products:
   * [digital I/O](#digital-io) 
   * [analog input](#analog-input)
   * [analog output](#analog-output)
+  * [RS485](#rs485)
   * [interrupts](#interrupts)
   * [calibration](#calibration)
 
@@ -243,6 +244,31 @@ void loop() {
   }
 }
 ```
+
+### RS485
+
+RS485 is a popular industrial network standard and the INDIO features a half duplex RS485 transceiver. It is often used with the Modbus protocol, so-called Modbus RTU (as opposed to Modbus TCP which uses Ethernet). The Master unit sends out periodic requests over the network, and Slaves receive and reply.
+
+Hardware specifics for INDIO RS485:
+* Serial connection = Serial1 (does not interfere with Serial, which can be used for uploading and Serial Monitor at the same time)
+* TxEnablePin = D9
+
+We can use the [SimpleModbusMaster and SimpleModbusSlave libraries](https://drive.google.com/folderview?id=0B0B286tJkafVYnBhNGo4N3poQ2c&usp=drive_web&tid=0B0B286tJkafVSENVcU1RQVBfSzg#list) (versions V2rev2 and V10 respectively) to establish communication over RS485 between 2 or more INDIOs, with one acting as the Master and the other one(s) as the Slave(s). This is one way of expanding the Industruino's number of I/O pins.
+
+Basic configuration of the above Modbus RTU libraries:
+```
+#define baud       115200   // tested 9600 to 115200
+#define timeout    1000
+#define polling    20    // the scan rate
+#define retry_count 10
+
+// used to toggle the receive/transmit pin on the driver
+#define TxEnablePin 9                                                           // INDUSTRUINO RS485
+#define SlaveID 2
+
+modbus_configure(&Serial1, baud, SERIAL_8N2, timeout, polling, retry_count, TxEnablePin, packets, TOTAL_NO_OF_PACKETS, regs);
+```
+For more information see the examples on our blog, e.g. [Modbus RTU between 2 INDIOs](https://industruino.com/blog/our-news-1/post/modbus-rtu-master-and-slave-14).
 
 ### CALIBRATION
 
