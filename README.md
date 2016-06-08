@@ -157,7 +157,7 @@ void loop() {
 
 #### INTERRUPTS on the 1286 topboard
 
-The interrupt pin of the expander on the 12/24V digital side is connected to the INT7 pin of the 1286 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs. If more than 1 channel needs to be detected by the interrupt, a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
+The interrupt pin of the expander on the 12/24V digital side is connected to the INT7 pin of the 1286 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs, and we can specify `CHANGE`, `RISING`, `FALLING`, `LOW`. If more than 1 channel needs to be detected by the interrupt, a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
 
 This code example (for 1286 topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce).
 ```
@@ -190,6 +190,46 @@ void loop() {
   lcd.setCursor(1, 3);
   lcd.print(counter);
   delay(100);
+}
+```
+
+The 1286 topboard also allows us to attach an interrupt to the membrane panel buttons: its button inputs are connected to pin change interrupts PCINT 4, 5, and 6 for buttons Down, Enter, and Up respectively.
+
+Below demo sketch will show "waiting" on the LCD; when you press the "Enter" button an interrupt will be triggered and "Enter pressed" will show on the LCD for one second. To attach the interrupt to the "Up" or "Down" button change "PCINT5" in line `PCMSK0 = (1 << PCINT6);` to PCINT4 or PCINT6.
+
+```
+#include <UC1701.h>
+static UC1701 lcd;
+
+volatile int modeFlag = 0;
+
+void setup() {
+  
+    lcd.begin(); //enable LCD
+    // Enable Pin Change Interrupt 5 = Enter button
+    PCMSK0 = (1 << PCINT5);
+    PCICR = (1 << PCIE0);
+ 
+    // Global Interrupt Enable
+   sei();    
+}
+
+ISR (PCINT0_vect)
+{    
+    modeFlag = 1;    
+}
+
+void loop() { 
+  
+  lcd.setCursor(0, 0);
+  lcd.print("waiting       ");
+  
+  if (modeFlag == 1) {
+    lcd.setCursor(0, 0);
+    lcd.print("Enter pressed");
+    delay(1000); 
+    modeFlag = 0;
+  }
 }
 ```
 
