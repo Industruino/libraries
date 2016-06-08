@@ -7,6 +7,8 @@ Arduino libraries to use with Industruino products
   * [analog input](#analog-input)
   * [analog output](#analog-output)
   * [interrupts](#interrupts)
+   *[for the 32u4 topboard](#interrupts-on-the-32u4-topboard)
+   *[for the 1286 topboard](#interrupts-on-the-1286-topboard)
 
 # UC1701
 The Industruino LCD is connected over SPI to the pins D19,20,21,22 (and the backlight to D13 on 32u4 boards and D26 on 1286 boards). We suggest you use either of these 2 libraries:
@@ -102,7 +104,11 @@ Indio.AnalogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 
 
 ### INTERRUPTS
 
-For using interrupts on the digital channels, please note the following. The interrupt pin of the expander on the 12/24V digital side is connected to pin D8 (PCINT 4) of the 32u4 topboard. This pin will trigger when a change on any of the 8 input or outputs occurs. If more than 1 channel needs to be detected by the interrupt, a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
+For using interrupts on the digital channels, the method depends on whether you're using topboard 32u4 or 1286. 
+
+#### INTERRUPTS for the 32u4 topboard
+
+The interrupt pin of the expander on the 12/24V digital side is connected to pin D8 (PCINT4) of the 32u4 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs. If more than 1 channel needs to be detected by the interrupt, a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
 
 This code example (for 32u4 topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce).
 ```
@@ -148,6 +154,15 @@ void loop() {
   lcd.print(counter);
   delay(100);
 }
+```
+
+#### INTERRUPTS for the 1286 topboard
+
+The interrupt pin of the expander on the 12/24V digital side is connected to the INT7 pin of the 1286 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs. If more than 1 channel needs to be detected by the interrupt, a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
+
+This code example (for 1286 topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce).
+```
+code
 ```
 
 ### CALIBRATION
