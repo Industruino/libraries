@@ -56,6 +56,9 @@ Indio.digitalWrite(7,LOW);        // Set CH7 to low (0V)
 
 ### ANALOG INPUT
 
+Important note:  
+The analog I/O section is galvanically isolated from the digital I/O section and the microcontroller section, to allow a separate power supply in the analog section for optimal accuracy. In case your analog sensors/actuators are on the same power supply as the digital section (Vin 12/24V) you have to connect the analog GND to the digital GND.
+
 Configuration of resolution:
 ```
 Indio.setADCResolution(16);       // Set the ADC resolution
@@ -79,6 +82,9 @@ Indio.analogRead(1);              //Read Analog-In CH1 (output depending on sele
 ```
 
 ### ANALOG OUTPUT
+
+Important note:  
+The analog I/O section is galvanically isolated from the digital I/O section and the microcontroller section, to allow a separate power supply in the analog section for optimal accuracy. In case your analog sensors/actuators are on the same power supply as the digital section (Vin 12/24V) you have to connect the analog GND to the digital GND.
 
 Configuration of output mode:
 ```
