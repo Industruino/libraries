@@ -1,5 +1,5 @@
 # Industruino libraries
-Arduino libraries to use with Industruino products
+Arduino libraries to use with Industruino products:
 * [UC1701](#uc1701)
 * [EthernetIndustruino](#ethernetindustruino)
 * [Indio](#indio)
@@ -236,7 +236,49 @@ void loop() {
 
 ### CALIBRATION
 
-Please find the calibration data array inside the Indio.cpp library file, together with an explanation on how to perform the calibration. The library is preloaded with calibration data but characteristics are board specific thus reading with standard cal. data might be off.
+Please find the calibration data array inside the Indio.cpp library file (as below), together with this explanation on how to perform the calibration. The library is preloaded with calibration data but characteristics are board specific thus reading with standard calibration data might be off. You are advised to update the calibration arrays in your own Indio.cpp file.
 
+Analog Calibration method:
+* Analog IN, 0-10V: In your sketch set the analogReadMode to V10_raw. Feed a known voltage between 0-10V into on of the 4 input channels. Read the corresponding raw ADC value from the serial terminal and write it down. Do this at two voltage levels, for example 2.5V and 7.5V. Enter the recorded raw ADC value and corresponding voltage (in mV) into the calibration array below. Repeat this for all 4 channels.
+* Analog IN, 4-20mA: In your sketch set the analogReadMode to mA_raw. Feed a known current between 0-20mA into on of the 4 input channels. Read the corresponding raw ADC value from the serial terminal and write it down. Do this at two current levels, for example 2.5V and 7.5V. Enter the recorded raw ADC value and corresponding voltage (in uA) into the calibration array below. Repeat this for all 4 channels. As a current source you can for example use a 500mA resistor in series with a 0-20V voltage source and multimeter in series.
+* Analog OUT, 0-10V: In your sketch set the analogWriteMode to V10_raw. Set the analogWrite value to anything between 0-4096. Read the corresponding output voltage on a multimeter and write it down. Do this at two DAC output values, for example 1000 and 3600. Enter the recorded raw DAC value and corresponding voltage (in mV) into the calibration array below. Repeat this for all 2 channels.
+* Analog OUT, 0-10V: In your sketch set the analogWriteMode to mA_raw. Set the analogWrite value to anything between 0-4096. Read the corresponding output current on a multimeter (connect multimeter between output and ground, best with a 100-500Ohm resistor in series) and write it down. Do this at two DAC output values, for example 1000 and 3600. Enter the recorded raw DAC value and corresponding current (in uA) into the calibration array below. Repeat this for all 2 channels.
+
+```
+//Calibration data array for ADC, 0-10V mode
+
+const int ADC_voltage_low_raw[5] = {0,384,384,382,386};//raw ADC value for low reference calibration point. Ignore first 0, subsequent is CH1-CH4 from left to right.
+const int ADC_voltage_low_mV[5] = {0,1006,1006,1006,1006}; //corresponding mV for low reference calibration point. Ignore first 0, subsequent is CH1-CH4 from left to right.
+
+const int ADC_voltage_high_raw[5] = {0,2939,2946,2952,2946}; //raw ADC value for high reference calibration point. Ignore first 0, subsequent is CH1-CH4 from left to right.
+const int ADC_voltage_high_mV[5] = {0,7985,7985,7985,7985}; //corresponding mV for high reference calibration point. Ignore first 0, subsequent is CH1-CH4 from left to right.
+
+
+//Calibration data array for ADC, 4-20mA mode
+
+const int ADC_current_low_raw[5] = {0,1863,1863,1863,1863}; //raw ADC value for low reference calibration point. Ignore first 0, subsequent is CH1-CH4 from left to right.
+const int ADC_current_low_uA[5] = {0,10000,10000,10000,10000}; //corresponding uA for low reference calibration point. Ignore first 0, subsequent is CH1-CH4 from left to right.
+
+const int ADC_current_high_raw[5] = {0,3692,3692,3692,3692}; //raw ADC value for high reference calibration point. Ignore first 0, subsequent is CH1-CH4 from left to right.
+const int ADC_current_high_uA[5] = {0,20000,20000,20000,20000}; //corresponding uA for high reference calibration point. Ignore first 0, subsequent is CH1-CH4 from left to right.
+
+
+//Calibration data array for DAC, 0-10V mode
+
+const int DAC_voltage_low_raw[3] = {0,1000,1000};//raw DAC value for low reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
+const int DAC_voltage_low_mV[3] = {0,2641,2630}; //corresponding mV for low reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
+
+const int DAC_voltage_high_raw[3] = {0,2500,2500}; //raw DAC value for high reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
+const int DAC_voltage_high_mV[3] = {0,6823,6805}; //corresponding mV for high reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
+
+
+//Calibration data array for DAC, 4-20mA mode
+
+const int DAC_current_low_raw[3] = {0,1000,1000}; //raw DAC value for low reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
+const int DAC_current_low_uA[3] = {0,5162,5162}; //corresponding uA for low reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
+
+const int DAC_current_high_raw[3] = {0,3600,3600}; //raw DAC value for high reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
+const int DAC_current_high_uA[3] = {0,19530,19530}; //corresponding uA for high reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
+```
 
 
