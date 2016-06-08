@@ -160,7 +160,36 @@ The interrupt pin of the expander on the 12/24V digital side is connected to the
 
 This code example (for 1286 topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce).
 ```
-code
+#include <Indio.h>
+#include <Wire.h>
+
+#include <UC1701.h>
+static UC1701 lcd;
+
+volatile int counter = 0;
+
+void setup() {
+
+  Serial.begin(9600);
+  lcd.begin();
+
+  Indio.digitalWrite(1, LOW);  // Clear CH1 to LOW
+  Indio.digitalMode(1, INPUT); // Set CH1 as an input
+
+  attachInterrupt(7, count, RISING);       // INT7 attached to the interrupt of the expander
+                                           // this is not D7
+}
+
+void count() {
+  Serial.println("trigger");
+  counter++;
+}
+
+void loop() {
+  lcd.setCursor(1, 3);
+  lcd.print(counter);
+  delay(100);
+}
 ```
 
 ### CALIBRATION
