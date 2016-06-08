@@ -124,6 +124,7 @@ void setup() {
   Serial.begin(9600);
   lcd.begin();
   
+  Indio.digitalWrite(1, LOW);  // Clear CH1 to LOW
   Indio.digitalMode(1, INPUT); // Set CH1 as an input
 
   // Enable Pin Change Interrupt
