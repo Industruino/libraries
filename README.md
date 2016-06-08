@@ -33,6 +33,10 @@ If you are using the Industruino Ethernet module, you will need this library whi
 The Ethernet module also includes FRAM; see the example in the library on how to use this.
 
 # Indio
+
+**Important note:**  
+The digital and analog I/O will only work when Vin power (6.5-32V) is supplied to the Indio baseboard via the green screw connectors. When only USB power is connected, none of the digital or analog channels, nor the RS485, will work.
+
 If you are using the Industruino IND.I/O product, you will need this library to access the I/O channels. The pins on the IDC expansion connector, the backlight pin, and the membrane panel buttons pin(s) should still be accessed in the usual way, not using the Indio library; the Indio library is only for the external I/O channels available on the green screw connectors.
 
 The Indio board uses an I2C expander for the I/O channels so we also need the Wire library.
@@ -56,7 +60,7 @@ Indio.digitalWrite(7,LOW);        // Set CH7 to low (0V)
 
 ### ANALOG INPUT
 
-Important note:  
+**Important note:**  
 The analog I/O section is galvanically isolated from the digital I/O section and the microcontroller section, to allow a separate power supply in the analog section for optimal accuracy. In case your analog sensors/actuators are on the same power supply as the digital section (Vin 12/24V) you have to connect the analog GND to the digital GND.
 
 Configuration of resolution:
@@ -83,7 +87,7 @@ Indio.analogRead(1);              //Read Analog-In CH1 (output depending on sele
 
 ### ANALOG OUTPUT
 
-Important note:  
+**Important note:**  
 The analog I/O section is galvanically isolated from the digital I/O section and the microcontroller section, to allow a separate power supply in the analog section for optimal accuracy. In case your analog sensors/actuators are on the same power supply as the digital section (Vin 12/24V) you have to connect the analog GND to the digital GND.
 
 Configuration of output mode:
