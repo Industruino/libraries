@@ -99,17 +99,17 @@ Indio.analogWriteMode(1, V10_raw);  // Set Analog-Out CH1 to 10V mode and take r
 
 Indio.analogWriteMode(1, mA);       // Set Analog-Out CH1 to mA mode (0-20mA).
 Indio.analogWriteMode(1, mA_p);     // Set Analog-Out CH1 to % mA mode (0-100% -> 4-20mA).
-Indio.analogWriteMode(1, ma_raw);   // Set Analog-Out CH1 to mA mode and take raw DAC value (0-4096 -> 0-20mA).   
+Indio.analogWriteMode(1, mA_raw);   // Set Analog-Out CH1 to mA mode and take raw DAC value (0-4096 -> 0-20mA).   
 ```
 Write (examples corresponding to above configuration):
 ```
 Indio.analogWrite(1, 2.67, true);   //Set CH1 to 2.67V ("true" will write value to EEPROM of DAC, restoring it after power cycling).
-Indio.AnalogWrite(1, 33.5, true);   //Set CH1 to 33.5% (approx 3.685V)
-Indio.AnalogWrite(1, 1000, true);   //Set CH1 DAC to integer value 1000 (approx 2.685V).
+Indio.analogWrite(1, 33.5, true);   //Set CH1 to 33.5% (approx 3.685V)
+Indio.analogWrite(1, 1000, true);   //Set CH1 DAC to integer value 1000 (approx 2.685V).
 
 Indio.analogWrite(1, 10.50, false); //Set CH1 to 10.5mA ("false" will not write value to EEPROM of DAC).
-Indio.AnalogWrite(1, 75, true);     //Set CH1 to 75% (approx 16mA).
-Indio.AnalogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 10.5mA).
+Indio.analogWrite(1, 75, true);     //Set CH1 to 75% (approx 16mA).
+Indio.analogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 10.5mA).
 ```
 
 ### INTERRUPTS
