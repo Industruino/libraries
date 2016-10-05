@@ -32,12 +32,15 @@ If you are using the Industruino Ethernet module, you will need this library whi
 #include <EthernetIndustruino.h>
 ```
 The Ethernet module also includes FRAM; see the example in the library on how to use this. If you want to use the FRAM together with the Ethernet, there is no need to include the SPI settings as in the FRAM example, because this is taken care of in the Ethernet library. So you can just include the 2 libraries with the above 2 lines; DO NOT include the SPI settings as in the FRAM example:
-```//Setting up the SPI bus
-  SPI.begin();
-  SPI.setDataMode(SPI_MODE0); 
-  SPI.setBitOrder(MSBFIRST);
-  SPI.setClockDivider(SPI_CLOCK_DIV2);
 ```
+//Setting up the SPI bus
+SPI.begin();
+SPI.setDataMode(SPI_MODE0); 
+SPI.setBitOrder(MSBFIRST);
+SPI.setClockDivider(SPI_CLOCK_DIV2);
+```
+
+
 # Indio
 
 ##### Important note:    
