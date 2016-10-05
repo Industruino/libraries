@@ -118,7 +118,7 @@ For using interrupts on the digital channels, the method depends on whether you'
 
 #### INTERRUPTS on the 32u4 topboard
 
-The interrupt pin of the expander on the 12/24V digital side is connected to pin D8 (PCINT4) of the 32u4 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs. If more than 1 channel needs to be detected by the interrupt, a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
+The interrupt pin of the expander on the 12/24V digital side is connected to pin D8 (PCINT4) of the 32u4 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs. If more than 1 channel needs to be detected by the interrupt, a flag can be set inside the interrupt service routine, and then any pin change can be checked inside the main loop, as discussed in this forum post https://industruino.com/forum/help-1/question/multiple-channels-interrupts-on-32u4-topboard-205
 
 This code example (for 32u4 topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce).
 ```
@@ -169,7 +169,7 @@ void loop() {
 
 #### INTERRUPTS on the 1286 topboard
 
-The interrupt pin of the expander on the 12/24V digital side is connected to the INT7 pin of the 1286 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs, and we can specify `CHANGE`, `RISING`, `FALLING`, `LOW` (note this pin is inverted: a change from LOW to HIGH on the digital channel triggers `FALLING`). If more than 1 channel needs to be detected by the interrupt, a small comparison routine can be run inside the interrupt service routine, which compares the status of the channels pre-inerrupt to the current status.
+The interrupt pin of the expander on the 12/24V digital side is connected to the INT7 pin of the 1286 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs, and we can specify `CHANGE`, `RISING`, `FALLING`, `LOW` (note this pin is inverted: a change from LOW to HIGH on the digital channel triggers `FALLING`). If more than 1 channel needs to be detected by the interrupt, a flag can be set inside the interrupt service routine, and then any pin change can be checked inside the main loop, as discussed in this forum post https://industruino.com/forum/help-1/question/multiple-channels-interrupts-on-32u4-topboard-205
 
 This code example (for 1286 topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce).
 ```
