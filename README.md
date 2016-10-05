@@ -43,6 +43,7 @@ SPI.setClockDivider(SPI_CLOCK_DIV2);
 When using the Ethernet module with the Industruino PROTO, it is important to be aware of the I/O pins it is using, and which should not be used for other I/O functions:
 
 | IDC pin number	| Module function	| Arduino pin	| Default connected	| Required for standard functions |
+| --- | --- | --- | --- | --- |
 | 1	|MISO	| D14	| yes	| yes |
 | 2	| +5V	| +5V	| yes	| yes |
 | 3	| SCLK	| D15/SCLK	| yes	| yes |
