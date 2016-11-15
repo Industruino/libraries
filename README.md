@@ -64,8 +64,10 @@ When using the Ethernet module with the Industruino PROTO, it is important to be
 
 # Indio
 
-##### Important note:    
+##### Important notes:    
 ##### The digital and analog I/O will only work when Vin power (6.5-32V) is supplied to the Indio baseboard via the green screw connectors. When only USB power is connected, none of the digital or analog channels, nor the RS485, will work.
+##### It is important to power down all systems (Industruino, sensors/actuators) before making connections to the Industruino.
+
 
 If you are using the Industruino IND.I/O product, you will need this library to access the I/O channels. The pins on the IDC expansion connector, the backlight pin, and the membrane panel buttons pin(s) should still be accessed in the usual way, not using the Indio library; the Indio library is only for the external I/O channels available on the green screw connectors.
 
@@ -119,7 +121,6 @@ Indio.analogRead(1);              //Read Analog-In CH1 (output depending on sele
 
 ##### Important note:   
 #####The analog I/O section is galvanically isolated from the digital I/O section and the microcontroller section, to allow a separate power supply in the analog section for optimal accuracy. In case your analog sensors/actuators are on the same power supply as the digital section (Vin 12/24V) you have to connect the analog GND to the digital GND.
-#####It is important to power down all systems (Industruino, sensors/actuators) before making connections to the Industruino.
 
 Configuration of output mode:
 ```
