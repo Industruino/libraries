@@ -119,6 +119,7 @@ Indio.analogRead(1);              //Read Analog-In CH1 (output depending on sele
 
 ##### Important note:   
 #####The analog I/O section is galvanically isolated from the digital I/O section and the microcontroller section, to allow a separate power supply in the analog section for optimal accuracy. In case your analog sensors/actuators are on the same power supply as the digital section (Vin 12/24V) you have to connect the analog GND to the digital GND.
+#####It is important to power down all systems (Industruino, sensors/actuators) before making connections to the Industruino.
 
 Configuration of output mode:
 ```
