@@ -100,6 +100,8 @@ Configuration of resolution:
 Indio.setADCResolution(16);       // Set the ADC resolution
                                   // Choices are 12bit@240SPS, 14bit@60SPS, 16bit@15SPS and 18bit@3.75SPS.
 ```
+Please note that the output of the Indio.analogRead() is not of the type INTEGER, but FLOAT. The output range is fixed from 0 to 4096 for all resolutions, but only in 12-bit mode this returns integers; for higher resolution the measurements are floating point numbers.
+
 Configuration of input mode:
 ```
 Indio.analogReadMode(1, V10);     // Set Analog-In CH1 to 10V mode (0-10V).
