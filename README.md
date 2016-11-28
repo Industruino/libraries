@@ -27,9 +27,9 @@ lcd.print("hello Industruino!");
 U8GLIB_MINI12864 u8g(21, 20, 19, 22);	// SPI Com: SCK = 21, MOSI = 20, CS = 19, A0 = 22
 ```
 
-* the [U8G2](https://github.com/olikraus/u8g2) library is the new improved version of the above U8G library, largely compatible. you can use this constructor:
+* the [U8G2](https://github.com/olikraus/u8g2) library is the new improved version of the above U8G library, largely compatible, with 3 [buffer](https://github.com/olikraus/u8g2/wiki/u8g2setupcpp#buffer-size) options (speed vs memory). you can use this constructor:
 ```
-U8G2_UC1701_MINI12864_2_4W_SW_SPI u8g2(U8G2_R2, 21, 20, 19, 22);   // rotation, clock, data, cs, dc
+U8G2_UC1701_MINI12864_1_4W_SW_SPI u8g2(U8G2_R2, 21, 20, 19, 22);   // rotation, clock, data, cs, dc
 ```
 
 # EthernetIndustruino
