@@ -4,8 +4,8 @@
 Arduino libraries to use with Industruino products:
 * [UC1701](#uc1701) - LCD display
 * [U8G and U8G2](#u8g-and-u8g2) - LCD display
-* [EthernetIndustruino](#ethernetindustruino)
-* [Indio](#indio)
+* [EthernetIndustruino](#ethernetindustruino) - Ethernet module
+* [Indio](#indio) - IND.I/O kit only
   * [digital I/O](#digital-io) 
   * [analog input](#analog-input)
   * [analog output](#analog-output)
