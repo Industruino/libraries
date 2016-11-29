@@ -2,7 +2,8 @@
 *Please note that we only support the Arduino IDE up to version 1.6.5 at the moment.*
 
 Arduino libraries to use with Industruino products:
-* [UC1701](#uc1701)
+* [UC1701](#uc1701) - LCD display
+* [U8G and U8G2](#u8g-and-u8g2) - LCD display
 * [EthernetIndustruino](#ethernetindustruino)
 * [Indio](#indio)
   * [digital I/O](#digital-io) 
@@ -21,7 +22,8 @@ lcd.clear();
 lcd.setCursor(1, 1);  
 lcd.print("hello Industruino!");
 ```
- 
+
+# U8G and U8G2
 * the [U8G](https://github.com/olikraus/u8glib) library: a popular display library with many fonts and graphics, consuming more memory. you can use this constructor:
 ```
 U8GLIB_MINI12864 u8g(21, 20, 19, 22);	// SPI Com: SCK = 21, MOSI = 20, CS = 19, A0 = 22
