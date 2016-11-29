@@ -24,12 +24,12 @@ lcd.print("hello Industruino!");
 ```
 
 # U8G and U8G2
-* the [U8G](https://github.com/olikraus/u8glib) library: a popular display library with many fonts and graphics, consuming more memory. you can use this constructor:
+[U8G](https://github.com/olikraus/u8glib) is a popular display library with many fonts and graphics, consuming more memory than the basic UC1701 above. Use this constructor:
 ```
 U8GLIB_MINI12864 u8g(21, 20, 19, 22);	// SPI Com: SCK = 21, MOSI = 20, CS = 19, A0 = 22
 ```
 
-* the [U8G2](https://github.com/olikraus/u8g2) library is the new improved version of the above U8G library, largely compatible, with 3 [buffer](https://github.com/olikraus/u8g2/wiki/u8g2setupcpp#buffer-size) options (speed vs memory). you can use this constructor:
+[U8G2](https://github.com/olikraus/u8g2) is the new improved version of the above U8G library, largely compatible, with 3 [buffer](https://github.com/olikraus/u8g2/wiki/u8g2setupcpp#buffer-size) options (speed vs memory). Use this constructor:
 ```
 U8G2_UC1701_MINI12864_1_4W_SW_SPI u8g2(U8G2_R2, 21, 20, 19, 22);   // rotation, clock, data, cs, dc
 ```
