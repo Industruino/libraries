@@ -254,7 +254,7 @@ float IndioClass::analogRead(int pin)
 	  }
       if(mode_DAC[pin]==4)
       {
-          output = map(((value+4)*100), DAC_current_low_uA[pin], DAC_current_high_uA[pin], DAC_current_low_raw[pin], DAC_current_high_raw[pin]);
+          output = map((4+(value*0.16))*1000, DAC_current_low_uA[pin], DAC_current_high_uA[pin], DAC_current_low_raw[pin], DAC_current_high_raw[pin]);
       }
       if(mode_DAC[pin]==5)
       {
