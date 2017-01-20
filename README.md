@@ -5,6 +5,9 @@ Arduino libraries to use with Industruino products:
 * [UC1701](#uc1701) - LCD display
 * [U8G and U8G2](#u8g-and-u8g2) - LCD display
 * [EthernetIndustruino](#ethernetindustruino) - Ethernet module
+  * [FRAM](#fram)
+  * [SD card](#sd-card)
+  * [IDC pinout](#idc-pinout)
 * [Indio](#indio) - IND.I/O kit only
   * [digital I/O](#digital-io) 
   * [analog input](#analog-input)
@@ -40,6 +43,9 @@ If you are using the Industruino Ethernet module, you will need this library whi
 #include <SPI.h>
 #include <EthernetIndustruino.h>
 ```
+
+### FRAM
+
 The Ethernet module also includes FRAM; see the example in the library on how to use this. If you want to use the FRAM together with the Ethernet, there is no need to include the SPI settings as in the FRAM example, because this is taken care of in the Ethernet library. So you can just include the 2 libraries with the above 2 lines; DO NOT include the SPI settings as in the FRAM example:
 ```
 //Setting up the SPI bus -- NO NEED when using the EthernetIndustruino library
@@ -48,6 +54,13 @@ SPI.setDataMode(SPI_MODE0);
 SPI.setBitOrder(MSBFIRST);
 SPI.setClockDivider(SPI_CLOCK_DIV2);
 ```
+
+### SD card
+
+The standard SD library included in the Arduino IDE works with the Ethernet module without modifications (CS is D4 as standard).
+
+
+### IDC pinout
 
 When using the Ethernet module with the Industruino PROTO, it is important to be aware of the I/O pins it is using, and which should not be used for other I/O functions:
 
