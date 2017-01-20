@@ -62,7 +62,7 @@ The standard SD library included in the Arduino IDE works with the Ethernet modu
 
 ### IDC pinout
 
-When using the Ethernet module with the Industruino PROTO, it is important to be aware of the I/O pins it is using, and which should not be used for other I/O functions:
+When using the Ethernet module with the Industruino PROTO, it is important to be aware of the I/O pins it is using, and which should not be used for other I/O functions; see below table. The IDC pins can also be used to connect other 5V devices to the PROTO and IND.I/O; they are accessible with standard `pinMode`, `digitalRead` and `digitalWrite` commands (different from the IND.I/O digital I/O channels, see below).
 
 | IDC pin number	| Module function	| Arduino pin	| Default connected	| Required for standard functions |
 | --- | --- | --- | --- | --- |
