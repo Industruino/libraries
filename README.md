@@ -37,11 +37,18 @@ U8GLIB_MINI12864 u8g(21, 20, 19, 22);	// SPI Com: SCK = 21, MOSI = 20, CS = 19, 
 U8G2_UC1701_MINI12864_1_4W_SW_SPI u8g2(U8G2_R2, 21, 20, 19, 22);   // rotation, clock, data, cs, dc
 ```
 
-# EthernetIndustruino
-If you are using the Industruino Ethernet module, you will need this library which is based on the standard Arduino Ethernet library. The Ethernet module is connected over SPI, so we also need the SPI library.
+# Ethernet
+If you are using the Industruino Ethernet module with 32u4 or 1286 Topboard use our EthernetIndustruino library. If you use D21G Topboard please use Ethernet2 library. Both libraries are based on the standard Arduino Ethernet library and support all same commands. The Ethernet module is connected over SPI, so we also need the SPI library.
+
+For 32u4 / 1286
 ```
 #include <SPI.h>
 #include <EthernetIndustruino.h>
+```
+For D21G
+```
+#include <SPI.h>
+#include <Ethernet2.h>
 ```
 
 ### FRAM
