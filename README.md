@@ -32,9 +32,14 @@ lcd.print("hello Industruino!");
 U8GLIB_MINI12864 u8g(21, 20, 19, 22);	// SPI Com: SCK = 21, MOSI = 20, CS = 19, A0 = 22
 ```
 
-[U8G2](https://github.com/olikraus/u8g2) is the new improved version of the above U8G library, largely compatible, with 3 [buffer](https://github.com/olikraus/u8g2/wiki/u8g2setupcpp#buffer-size) options (speed vs memory). Use this constructor:
+[U8G2](https://github.com/olikraus/u8g2) is the new improved version of the above U8G library, largely compatible, with 3 [buffer](https://github.com/olikraus/u8g2/wiki/u8g2setupcpp#buffer-size) options (speed vs memory). Use this constructor for software SPI:
 ```
 U8G2_UC1701_MINI12864_1_4W_SW_SPI u8g2(U8G2_R2, 21, 20, 19, 22);   // rotation, clock, data, cs, dc
+```
+Hardware SPI: This is only supported on D21G Topboard. Change SPI interface #define from "SPI" to "SPI1" in src/U8x8lib.cpp line #49).
+Use this constructor for hardware SPI:
+```
+U8G2_UC1701_MINI12864_F_4W_HW_SPI u8g2(U8G2_R2, /* cs=*/ 19, /* dc=*/ 22);
 ```
 
 # Ethernet
