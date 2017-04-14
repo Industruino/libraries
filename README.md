@@ -17,6 +17,7 @@ Arduino libraries to use with Industruino products:
   * [calibration](#calibration)
 
 # UC1701
+You can download the library from within the Arduino libraries manager or from [this repository](https://github.com/Industruino/UC1701).
 The Industruino LCD is connected over SPI to the pins D19,20,21,22 (and the backlight to D13 on 32u4 boards and D26 on 1286 boards). We suggest you use either of these 2 libraries:
 * our customised UC1701 library (available in this repository): easy to use, relatively small (it is also used in the Industruino pre-installed demo sketches). it is largely compatible with the popular PCD8544 (Nokia screens). familiar syntax:  
 ```
@@ -43,7 +44,7 @@ U8G2_UC1701_MINI12864_F_4W_HW_SPI u8g2(U8G2_R2, /* cs=*/ 19, /* dc=*/ 22);
 ```
 
 # Ethernet
-If you are using the Industruino Ethernet module with 32u4 or 1286 Topboard use our EthernetIndustruino library. If you use D21G Topboard please use Ethernet2 library. Both libraries are based on the standard Arduino Ethernet library and support all same commands. The Ethernet module is connected over SPI, so we also need the SPI library.
+If you are using the Industruino Ethernet module with 32u4 or 1286 Topboard use our [EthernetIndustruino library](https://github.com/Industruino/EthernetIndustruino). If you use D21G Topboard please use [Ethernet2 library](https://github.com/Industruino/Ethernet2). Both libraries are based on the standard Arduino Ethernet library and support all same commands. The Ethernet module is connected over SPI, so we also need the SPI library.
 
 For 32u4 / 1286
 ```
@@ -100,6 +101,7 @@ When using the Ethernet module with the Industruino PROTO, it is important to be
 ##### The digital and analog I/O will only work when Vin power (6.5-32V) is supplied to the Indio baseboard via the green screw connectors. When only USB power is connected, none of the digital or analog channels, nor the RS485, will work.
 ##### It is important to power down all systems (Industruino, sensors/actuators) before making connections to the Industruino.
 
+You can download the library from within the Arduino libraries manager or from [this repository](https://github.com/Industruino/Indio).
 
 If you are using the Industruino IND.I/O product, you will need this library to access the I/O channels. The pins on the IDC expansion connector, the backlight pin, and the membrane panel buttons pin(s) should still be accessed in the usual way, not using the Indio library; the Indio library is only for the external I/O channels available on the green screw connectors.
 
