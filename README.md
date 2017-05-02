@@ -1,5 +1,14 @@
+*Please note Arduino IDE compatibility:*
+* 32u4 is compatible with all IDE versions (board type: Leonardo)
+* 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions)
+* d21g is compatible with IDE from 1.6.12 (automatic install via board manager)
+
+*other board specific features:*
+* LCD backlight on D13 for 32u4, D26 for 1286 and d21g
+* Serial ports on 32u4 and 1286: 'Serial' for USB and 'Serial1' for hardware serial on D0/D1
+* Serial ports on d21g: 'SerialUSB' for USB and  'Serial' for hardware serial on D0/D1 and 'Serial1' for hardware serial on D10/D5
+
 # Industruino libraries
-*Please note that we only support the Arduino IDE up to version 1.6.5 at the moment.*
 
 Arduino libraries to use with Industruino products:
 * [UC1701](#uc1701) - LCD display
