@@ -1,7 +1,7 @@
 *Please note Arduino IDE compatibility:*
 * 32u4 is compatible with all IDE versions (board type: Leonardo)
-* 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions)
-* d21g is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLS:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
+* 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions - follow instructions in the support file package)
+* d21g is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
 
 *other board specific features:*
 * LCD backlight on D13 for 32u4, D26 for 1286 and d21g
