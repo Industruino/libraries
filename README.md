@@ -1,6 +1,6 @@
 *Please note Arduino IDE compatibility:*
 * 32u4 is compatible with all IDE versions (board type: Leonardo)
-* 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions - follow instructions in the support file package)
+* 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions: follow instructions in the support file package)
 * d21g is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
 
 *other board specific features:*
@@ -24,6 +24,7 @@ Arduino libraries to use with Industruino products:
   * [RS485](#rs485)
   * [interrupts](#interrupts)
   * [calibration](#calibration)
+* [RTC](https://github.com/Industruino/MCP7940-RTC-Library)  
 
 # UC1701
 You can download the library from within the Arduino libraries manager or from [this repository](https://github.com/Industruino/UC1701).
