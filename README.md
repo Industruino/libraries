@@ -24,7 +24,7 @@ Arduino libraries to use with Industruino products:
   * [RS485](#rs485)
   * [interrupts](#interrupts)
   * [calibration](#calibration)
-* [RTC](https://github.com/Industruino/MCP7940-RTC-Library)  
+* [RTC](https://github.com/Industruino/MCP7940-RTC-Library) - D21G only  
 
 # UC1701
 You can download the library from within the Arduino libraries manager or from [this repository](https://github.com/Industruino/UC1701).
