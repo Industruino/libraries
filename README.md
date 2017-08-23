@@ -1,12 +1,12 @@
 *Please note Arduino IDE compatibility:*
 * 32u4 is compatible with all IDE versions (board type: Leonardo)
 * 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions: follow instructions in the support file package)
-* d21g is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
+* D21G is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
 
 *other board specific features:*
-* LCD backlight on D13 for 32u4, D26 for 1286 and d21g
+* LCD backlight on D13 for 32u4, D26 for 1286 and D21G
 * Serial ports on 32u4 and 1286: 'Serial' for USB and 'Serial1' for hardware serial on D0/D1
-* Serial ports on d21g: 'SerialUSB' for USB and  'Serial' for hardware serial on D0/D1 and 'Serial1' for hardware serial on D10/D5
+* Serial ports on D21G: 'SerialUSB' for USB and  'Serial' for hardware serial on D0/D1 and 'Serial1' for hardware serial on D10/D5
 
 # Industruino libraries
 
@@ -54,22 +54,25 @@ U8G2_UC1701_MINI12864_F_4W_HW_SPI u8g2(U8G2_R2, /* cs=*/ 19, /* dc=*/ 22);
 ```
 
 # Ethernet
-If you are using the Industruino Ethernet module with 32u4 or 1286 Topboard use our [EthernetIndustruino library](https://github.com/Industruino/EthernetIndustruino). If you use D21G Topboard please use [Ethernet2 library](https://github.com/Industruino/Ethernet2). Both libraries are based on the standard Arduino Ethernet library and support all same commands. The Ethernet module is connected over SPI, so we also need the SPI library.
+If you have the D21G Topboard please use [Ethernet2 library](https://github.com/Industruino/Ethernet2). 
+If you are using the Industruino Ethernet module with 32u4 or 1286 Topboard use our [EthernetIndustruino library](https://github.com/Industruino/EthernetIndustruino). 
+Both libraries are based on the standard Arduino Ethernet library and support all same commands. The Ethernet module is connected over SPI, so we also need the SPI library.
 
-For 32u4 / 1286
-```
-#include <SPI.h>
-#include <EthernetIndustruino.h>
-```
 For D21G
 ```
 #include <SPI.h>
 #include <Ethernet2.h>
 ```
+For 32u4 / 1286
+```
+#include <SPI.h>
+#include <EthernetIndustruino.h>
+```
 
 ### FRAM
 
-The Ethernet module also includes FRAM; see the example in the library on how to use this. If you want to use the FRAM together with the Ethernet, there is no need to include the SPI settings as in the FRAM example, because this is taken care of in the Ethernet library. So you can just include the 2 libraries with the above 2 lines; DO NOT include the SPI settings as in the FRAM example:
+The Ethernet module also includes FRAM; for D21G see this [demo sketch](https://github.com/Industruino/democode/tree/master/fram_D21G). 
+For 32u4/1286 the example is in the EthernetIndustruino library. If you want to use the FRAM together with the Ethernet, there is no need to include the SPI settings as in the FRAM example, because this is taken care of in the Ethernet library. So you can just include the 2 libraries with the above 2 lines; DO NOT include the SPI settings as in the FRAM example:
 ```
 //Setting up the SPI bus -- NO NEED when using the EthernetIndustruino library
 SPI.begin();
@@ -80,8 +83,15 @@ SPI.setClockDivider(SPI_CLOCK_DIV2);
 
 ### SD card
 
-The standard SD library included in the Arduino IDE works with the Ethernet module without modifications (CS is D4 as standard).
-
+The standard SD library included in the Arduino IDE works with the Ethernet module with minor modifications (CS is D4 as standard): for the D21G replace *Serial* by *SerialUSB*. And you may have to add these lines to ensure the CS of Ethernet, FRAM, and SD are HIGH:
+```
+pinMode(10, OUTPUT); // Ethernet CS
+pinMode(6, OUTPUT);  // FRAM CS
+pinMode(4, OUTPUT);  // SD card CS
+digitalWrite(10, HIGH);
+digitalWrite(6, HIGH);
+digitalWrite(4, HIGH);
+```
 
 ### IDC pinout
 
