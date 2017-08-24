@@ -30,6 +30,7 @@ Arduino libraries to use with Industruino products:
   * [calibration](#calibration)
 * [RTC](https://github.com/Industruino/MCP7940-RTC-Library) - D21G only
 * [WDT](#watchdog)
+* [GSM/GPRS](#gsm/gprs) - GSM/GPRS module
 
 # UC1701
 You can download the library from within the Arduino libraries manager or from [this repository](https://github.com/Industruino/UC1701).
@@ -465,3 +466,7 @@ const int DAC_current_high_uA[3] = {0,19530,19530}; //corresponding uA for high 
 # Watchdog
 The Adafruit SleepyDog library works on the D21G as in this [example](https://github.com/Industruino/democode/blob/master/watchdog_D21G/watchdog_D21G.ino).
 For AVR watchdogs on the 1286 and 32u4, see [here](https://industruino.com/page/wdt).
+
+
+# GSM/GPRS
+The Industruino GSM/GPRS module is based on the SIM800 and can be used with a variety of libraries. We recommend the [TinyGSM](https://github.com/vshymanskyy/TinyGSM/blob/master/README.md) library, and you can find several code examples modified for Industruino [here](https://github.com/Industruino/democode). See the module's user manual for configuration options of the hardware/software serial selector switches.
