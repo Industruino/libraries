@@ -477,7 +477,7 @@ The Industruino GSM/GPRS module is based on the SIM800 and can be used with a va
 Modbus is a serial communications protocol popular in industry. It uses a Master/Slave(s) configuration, and comes in 2 types:
 * Modbus RTU: using an RS485 port, available on the Industruino IND.I/O
   * suggested library: [SimpleModbus](https://code.google.com/archive/p/simple-modbus/)
-  * example: [slave: wind speed sensor](https://industruino.com/blog/our-news-1/post/modbus-rtu-on-industruino-ind-i-o-11)
+  * example: [master: wind speed sensor](https://industruino.com/blog/our-news-1/post/modbus-rtu-on-industruino-ind-i-o-11)
   * example: [master+slave: I/O expansion](https://industruino.com/blog/our-news-1/post/modbus-rtu-master-and-slave-14)
 * Modbus TCP: using Ethernet, with the Industruino Ethernet module
   * suggested library: [MgsModbus](http://myarduinoprojects.com/modbus.html)
