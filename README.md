@@ -1,12 +1,16 @@
-*Please note Arduino IDE compatibility:*
+*Arduino IDE compatibility:*
+* D21G is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
 * 32u4 is compatible with all IDE versions (board type: Leonardo)
 * 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions: follow instructions in the support file package)
-* D21G is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
 
-*other board specific features:*
-* LCD backlight on D13 for 32u4, D26 for 1286 and D21G
-* Serial ports on 32u4 and 1286: 'Serial' for USB and 'Serial1' for hardware serial on D0/D1
-* Serial ports on D21G: 'SerialUSB' for USB and  'Serial' for hardware serial on D0/D1 and 'Serial1' for hardware serial on D10/D5
+
+*Board specific features:*
+* Serial ports on D21G: 
+  * `SerialUSB` for USB (Serial Monitor)
+  * `Serial` for hardware serial on D0/D1
+  * `Serial1` for hardware serial on D10/D5
+* Serial ports on 32u4 and 1286: `Serial` for USB and `Serial1` for hardware serial on D0/D1
+* LCD backlight on D26 for D21G (same for 1286, but D13 for 32u4) 
 
 # Industruino libraries
 
@@ -24,7 +28,8 @@ Arduino libraries to use with Industruino products:
   * [RS485](#rs485)
   * [interrupts](#interrupts)
   * [calibration](#calibration)
-* [RTC](https://github.com/Industruino/MCP7940-RTC-Library) - D21G only  
+* [RTC](https://github.com/Industruino/MCP7940-RTC-Library) - D21G only
+* [WDT](#watchdog)
 
 # UC1701
 You can download the library from within the Arduino libraries manager or from [this repository](https://github.com/Industruino/UC1701).
@@ -457,3 +462,6 @@ const int DAC_current_high_uA[3] = {0,19530,19530}; //corresponding uA for high 
 ```
 
 
+# Watchdog
+The Adafruit SleepyDog library works on the D21G as in this [example](https://github.com/Industruino/democode/blob/master/watchdog_D21G/watchdog_D21G.ino).
+For AVR watchdogs on the 1286 and 32u4, see [here](https://industruino.com/page/wdt).
