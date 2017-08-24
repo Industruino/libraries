@@ -31,6 +31,7 @@ Arduino libraries to use with Industruino products:
 * [RTC](https://github.com/Industruino/MCP7940-RTC-Library) - D21G only
 * [WDT](#watchdog)
 * [GSM/GPRS](#gsmgprs) - GSM/GPRS module
+* [Modbus](#modbus) - RTU and TCP
 
 # UC1701
 You can download the library from within the Arduino libraries manager or from [this repository](https://github.com/Industruino/UC1701).
@@ -470,3 +471,16 @@ For AVR watchdogs on the 1286 and 32u4, see [here](https://industruino.com/page/
 
 # GSM/GPRS
 The Industruino GSM/GPRS module is based on the SIM800 and can be used with a variety of libraries. We recommend the [TinyGSM](https://github.com/vshymanskyy/TinyGSM) library, and you can find several code examples modified for Industruino [here](https://github.com/Industruino/democode). See the module's user manual for configuration options of the hardware/software serial selector switches.
+
+
+# Modbus
+Modbus is a serial communications protocol popular in industry. It uses a Master/Slave(s) configuration, and comes in 2 types:
+* Modbus RTU: using an RS485 port, available on the Industruino IND.I/O
+  * suggested library: [SimpleModbus](https://code.google.com/archive/p/simple-modbus/)
+  * example: [slave: wind speed sensor](https://industruino.com/blog/our-news-1/post/modbus-rtu-on-industruino-ind-i-o-11)
+  * example: [master+slave: I/O expansion](https://industruino.com/blog/our-news-1/post/modbus-rtu-master-and-slave-14)
+* Modbus TCP: using Ethernet, with the Industruino Ethernet module
+  * suggested library: [MgsModbus](http://myarduinoprojects.com/modbus.html)
+  * example: [slave: switching application](https://industruino.com/blog/our-news-1/post/ind-i-o-switching-application-with-modbus-tcp-12)
+
+Modbus uses 16-bit registers, we so often need to convert these from/to 32-bit `float` and `long` types; you can use the functions described [here](https://industruino.com/blog/our-news-1/post/modbus-tips-for-industruino-26).
