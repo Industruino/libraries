@@ -30,7 +30,7 @@ Arduino libraries to use with Industruino products:
   * [calibration](#calibration)
 * [RTC](https://github.com/Industruino/MCP7940-RTC-Library) - D21G only
 * [WDT](#watchdog)
-* [GSM/GPRS](#gsm/gprs) - GSM/GPRS module
+* [GSM/GPRS](#gsmgprs) - GSM/GPRS module
 
 # UC1701
 You can download the library from within the Arduino libraries manager or from [this repository](https://github.com/Industruino/UC1701).
