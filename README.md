@@ -469,4 +469,4 @@ For AVR watchdogs on the 1286 and 32u4, see [here](https://industruino.com/page/
 
 
 # GSM/GPRS
-The Industruino GSM/GPRS module is based on the SIM800 and can be used with a variety of libraries. We recommend the [TinyGSM](https://github.com/vshymanskyy/TinyGSM/blob/master/README.md) library, and you can find several code examples modified for Industruino [here](https://github.com/Industruino/democode). See the module's user manual for configuration options of the hardware/software serial selector switches.
+The Industruino GSM/GPRS module is based on the SIM800 and can be used with a variety of libraries. We recommend the [TinyGSM](https://github.com/vshymanskyy/TinyGSM) library, and you can find several code examples modified for Industruino [here](https://github.com/Industruino/democode). See the module's user manual for configuration options of the hardware/software serial selector switches.
