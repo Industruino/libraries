@@ -1,4 +1,4 @@
-# Arduino IDE compatibility
+### Arduino IDE compatibility
 
 * D21G is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
 * 32u4 is compatible with all IDE versions (board type: Leonardo)
@@ -30,6 +30,7 @@ Arduino libraries to use with Industruino products:
   * [interrupts](#interrupts)
   * [calibration](#calibration)
 * [RTC](#rtc) - D21G only
+* [EEPROM](#eeprom)
 * [WDT](#watchdog)
 * [GSM/GPRS](#gsmgprs) - GSM/GPRS module
 * [Modbus](#modbus) - RTU and TCP
