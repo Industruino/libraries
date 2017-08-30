@@ -1,4 +1,5 @@
-*Arduino IDE compatibility:*
+# Arduino IDE compatibility
+
 * D21G is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
 * 32u4 is compatible with all IDE versions (board type: Leonardo)
 * 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions: follow instructions in the support file package)
@@ -28,7 +29,7 @@ Arduino libraries to use with Industruino products:
   * [RS485](#rs485)
   * [interrupts](#interrupts)
   * [calibration](#calibration)
-* [RTC](https://github.com/Industruino/MCP7940-RTC-Library) - D21G only
+* [RTC](#rtc) - D21G only
 * [WDT](#watchdog)
 * [GSM/GPRS](#gsmgprs) - GSM/GPRS module
 * [Modbus](#modbus) - RTU and TCP
@@ -462,6 +463,23 @@ const int DAC_current_low_uA[3] = {0,5162,5162}; //corresponding uA for low refe
 const int DAC_current_high_raw[3] = {0,3600,3600}; //raw DAC value for high reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
 const int DAC_current_high_uA[3] = {0,19530,19530}; //corresponding uA for high reference calibration point. Ignore first 0, subsequent is CH1-CH2 from left to right.
 ```
+
+
+# RTC
+Industruinos with the D21G topboard have a built-in RTC (MCP79402 with I2C 0x57 and 0x6F) that can be used with this [library](https://github.com/Industruino/MCP7940-RTC-Library). A simple example that displays the date and time on the LCD can be found [here](https://github.com/Industruino/democode/blob/master/rtc_D21G/rtc_D21G.ino).
+
+
+# EEPROM
+Industruinos with the D21G topboard have 1kB EEPROM (non-volatile memory) available over I2C (0x50, 0x51, 0x52, 0x53) that can be used with this [library](https://github.com/RobTillaart/Arduino/tree/master/libraries/I2C_EEPROM). It can also be used directly with the Wire library to read/write bytes. 
+
+
+Each of the 4 I2C addresses have 255 bytes available; in total 1kByte.
+
+
+Check out this [example sketch](https://github.com/Industruino/democode/blob/master/i2c_eeprom_D21G/i2c_eeprom_D21G.ino) that uses the above library to write/read `byte`, `long`, and `float` types (including the conversions).
+
+
+The 32u4 and 1286 topboards can use the standard Arduino EEPROM library.
 
 
 # Watchdog
