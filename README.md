@@ -13,6 +13,10 @@
 * Serial ports on 32u4 and 1286: `Serial` for USB and `Serial1` for hardware serial on D0/D1
 * LCD backlight on D26 for D21G (same for 1286, but D13 for 32u4) 
 
+
+The pre-loaded demo code is available at https://github.com/Industruino/democode
+
+
 # Industruino libraries
 
 Arduino libraries to use with Industruino products:
