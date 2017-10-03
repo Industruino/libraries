@@ -488,7 +488,9 @@ The 32u4 and 1286 topboards can use the standard Arduino EEPROM library.
 
 
 # Watchdog
-The Adafruit SleepyDog library works on the D21G as in this [example](https://github.com/Industruino/democode/blob/master/watchdog_D21G/watchdog_D21G.ino).
+The Adafruit SleepyDog library works on the D21G as in this [example](https://github.com/Industruino/democode/blob/master/watchdog_D21G/watchdog_D21G.ino). This library also has a SLEEP function, which gives good results on the Industruino as documented [here](https://industruino.com/blog/our-news-1/post/d21g-features-30).
+
+
 For AVR watchdogs on the 1286 and 32u4, see [here](https://industruino.com/page/wdt).
 
 
