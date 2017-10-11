@@ -475,7 +475,7 @@ Industruinos with the D21G topboard have a built-in RTC (MCP79402 with I2C 0x57 
 
 
 # EEPROM
-Industruinos with the D21G topboard have 1kB EEPROM (non-volatile memory) available over I2C (0x50, 0x51, 0x52, 0x53) that can be used with this [library](https://github.com/RobTillaart/Arduino/tree/master/libraries/I2C_EEPROM). It can also be used directly with the Wire library to read/write bytes. 
+Industruinos with the D21G topboard (from version 1.7) have 1kB EEPROM (non-volatile memory) available over I2C (0x50, 0x51, 0x52, 0x53) that can be used with this [library](https://github.com/RobTillaart/Arduino/tree/master/libraries/I2C_EEPROM). It can also be used directly with the Wire library to read/write bytes. 
 
 
 Each of the 4 I2C addresses have 255 bytes available; in total 1kByte.
