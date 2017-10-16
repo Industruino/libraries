@@ -6,6 +6,7 @@
 
 
 *Board specific features:*
+* RESET button on D21G: when your computer does not recognise the USB port anymore, reset the D21G by pushing the reset button on the bottom of the topboard TWICE (you will have to remove the casing for this). The LCD backlight will start fading in&out, indicating the bootloader is active and ready for a new upload.
 * Serial ports on D21G: 
   * `SerialUSB` for USB (Serial Monitor)
   * `Serial` for hardware serial on D0/D1
