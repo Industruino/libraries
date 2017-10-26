@@ -68,7 +68,9 @@ U8G2_UC1701_MINI12864_F_4W_HW_SPI u8g2(U8G2_R2, /* cs=*/ 19, /* dc=*/ 22);
 ```
 
 # Ethernet
-If you have the D21G Topboard please use [Ethernet2 library](https://github.com/Industruino/Ethernet2). 
+If you have the D21G Topboard please use Industruino version of the [Ethernet2 library](https://github.com/Industruino/Ethernet2). This is a fork of the original Ethernet2, with one important change: the SPI speed is set to 4MHz in this [file, line 25](https://github.com/Industruino/Ethernet2/blob/master/src/utility/w5500.cpp).
+
+
 If you are using the Industruino Ethernet module with 32u4 or 1286 Topboard use our [EthernetIndustruino library](https://github.com/Industruino/EthernetIndustruino). 
 Both libraries are based on the standard Arduino Ethernet library and support all same commands. The Ethernet module is connected over SPI, so we also need the SPI library.
 
