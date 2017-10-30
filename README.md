@@ -13,6 +13,7 @@
   * `Serial1` for hardware serial on D10/D5
 * Serial ports on 32u4 and 1286: `Serial` for USB and `Serial1` for hardware serial on D0/D1
 * LCD backlight on D26 for D21G (same for 1286, but D13 for 32u4) 
+* Hardware Timers of the Industruino D21G are similar to the Arduino Zero, see this [blog post](https://industruino.com/blog/our-news-1/post/d21g-timer-library-33).
 
 
 The pre-loaded demo code is available at https://github.com/Industruino/democode
