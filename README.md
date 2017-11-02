@@ -540,6 +540,8 @@ Default HIGH signal is 3.3V. To get a digital output on the PROTO D21G at 5V lev
 ## Digital input
 The `INPUT_PULLUP` mode defaults to 3.3V, we can use a pull-up resistor of 10K if we need 5V.
 
+External interrupts work on all pins except 11 and 17, with the standard `attachInterrupt(pin, ISR, mode);` instruction. More details at [Arduino reference](https://www.arduino.cc/en/Reference/AttachInterrupt).
+
 
 ## Analog output
 The PROTO D21G has one 10-bit DAC available on pin D18; to use it we need to refer to it as `DAC0`. The range is 0 to 3.3V. Default resolution is 8-bit. These lines will set the output to 1.65V (50% of 3.3V) at maximum resolution of 12-bit.
