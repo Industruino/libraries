@@ -547,7 +547,7 @@ External interrupts work on all pins except 11 and 17, with the standard `attach
 The PROTO D21G has one 10-bit DAC available on pin D18; to use it we need to refer to it as `DAC0`. The range is 0 to 3.3V. Default resolution is 8-bit. These lines will set the output to 1.65V (50% of 3.3V) at maximum resolution of 12-bit.
 ```
 analogWriteResolution(12);
-analogWrite(A0, 2048);
+analogWrite(DAC0, 2048);
 ```
 
 PWM output is available on a range of pins, see the PROTO D21G pinout map.
