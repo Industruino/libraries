@@ -1,6 +1,11 @@
 ### Arduino IDE compatibility
 
-D21G is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
+D21G is compatible with IDE from 1.6.12 with automatic install via board manager: 
+* In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json 
+* Enter the Board Manager via *Tools > Board* and search for 'industruino'
+* Install the Industruino package
+* *Industruino D21G* will show up in the Boards list in *Tools > Board* in section *Industruino SAMD*
+* Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip
 
 
 ### D21G board specific features
@@ -533,16 +538,18 @@ Default HIGH signal is 3.3V. To get a digital output on the PROTO D21G at 5V lev
 
 
 ## Digital input
+The `INPUT_PULLUP` mode defaults to 3.3V, we can use a pull-up resistor of 10K if we need 5V.
 
 
 ## Analog output
-The PROTO D21G has one 10-bit DAC available on pin A0=D18 but to use it we need to refer to it as `DAC0`. The range is 0 to 3.3V. Default resolution is 8-bit. These lines will set the output to 1.65V (50% of 3.3V) at maximum resolution of 12-bit.
+The PROTO D21G has one 10-bit DAC available on pin D18; to use it we need to refer to it as `DAC0`. The range is 0 to 3.3V. Default resolution is 8-bit. These lines will set the output to 1.65V (50% of 3.3V) at maximum resolution of 12-bit.
 ```
 analogWriteResolution(12);
 analogWrite(A0, 2048);
 ```
 
-See [Arduino reference](https://www.arduino.cc/en/Reference/AnalogWriteResolution).
+PWM output is available on a range of pins, see the PROTO D21G pinout map.
+More details at [Arduino reference](https://www.arduino.cc/en/Reference/AnalogWriteResolution).
 
 
 ## Analog input
@@ -551,4 +558,4 @@ Please note that the pin numbers for analog input follow the digital pin numbers
 Analog read resolution default is 10-bit, returning values 0-1023.
 We can change this to 12-bit with `analogReadResolution(12);` returning values 0-4095.
 
-See [Arduino reference](https://www.arduino.cc/en/Reference/AnalogReadResolution).
+More details at [Arduino reference](https://www.arduino.cc/en/Reference/AnalogReadResolution).
