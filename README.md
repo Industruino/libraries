@@ -1,22 +1,26 @@
 ### Arduino IDE compatibility
 
 * D21G is compatible with IDE from 1.6.12 (automatic install via board manager: In *File > Preferences > Additional Boards Manager URLs:* add https://static.industruino.com/downloads/code/IndustruinoCores/IndustruinoSAMD/pkgdef/package_industruino_samd_index.json. Enter the Board Manager via *Tools > Board* and search for 'industruino'. Install the Industruino package, and then the D21G will show up in the Boards list in *Tools > Board*. Windows driver (if needed): https://static.industruino.com/downloads/drivers/drivers-industruino-windows-0.0.1.zip)
-* 32u4 is compatible with all IDE versions (board type: Leonardo)
-* 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions: follow instructions in the support file package)
 
 
-*Board specific features:*
+*D21G board specific features:*
 * RESET button on D21G: when your computer does not recognise the USB port anymore, reset the D21G by pushing the reset button on the bottom of the topboard TWICE (you will have to remove the casing for this). The LCD backlight will start fading in&out, indicating the bootloader is active and ready for a new upload.
 * Serial ports on D21G: 
   * `SerialUSB` for USB (Serial Monitor)
   * `Serial` for hardware serial on D0/D1
   * `Serial1` for hardware serial on D10/D5
-* Serial ports on 32u4 and 1286: `Serial` for USB and `Serial1` for hardware serial on D0/D1
-* LCD backlight on D26 for D21G (same for 1286, but D13 for 32u4) 
+* LCD backlight on D26 
 * Hardware Timers of the Industruino D21G are similar to the Arduino Zero, see this [blog post](https://industruino.com/blog/our-news-1/post/d21g-timer-library-33).
-
+* [D21G PROTO kit](#proto): notes on digital and analog input/output 
 
 The pre-loaded demo code is available at https://github.com/Industruino/democode
+
+
+*Legacy boards 32u4 and 1286 specific features:*
+* 32u4 is compatible with all IDE versions (board type: Leonardo)
+* 1286 is compatible with IDE up to 1.6.5 (manual install of board definitions: follow instructions in the support file package)
+* Serial ports on 32u4 and 1286: `Serial` for USB and `Serial1` for hardware serial on D0/D1
+* LCD backlight is on D13 for 32u4 and D26 for 1286
 
 
 # Industruino libraries
@@ -513,3 +517,8 @@ Modbus is a serial communications protocol popular in industry. It uses a Master
   * example: [slave: switching application](https://industruino.com/blog/our-news-1/post/ind-i-o-switching-application-with-modbus-tcp-12)
 
 Modbus uses 16-bit registers, we so often need to convert these from/to 32-bit `float` and `long` types; you can use the functions described [here](https://industruino.com/blog/our-news-1/post/modbus-tips-for-industruino-26).
+
+
+# PROTO
+Notes on digital and analog input/output for the Industruino D21G PROTO kit
+
