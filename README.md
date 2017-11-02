@@ -561,3 +561,13 @@ Analog read resolution default is 10-bit, returning values 0-1023.
 We can change this to 12-bit with `analogReadResolution(12);` returning values 0-4095.
 
 More details at [Arduino reference](https://www.arduino.cc/en/Reference/AnalogReadResolution).
+
+The analog reference voltage is 3.3V by default, and can be changed to these options:
+```
+  analogReference(AR_DEFAULT);     // 3V3
+  analogReference(AR_INTERNAL);    // 2V23
+  analogReference(AR_EXTERNAL);    // put on AREF, max 3V3
+  analogReference(AR_INTERNAL1V0);  
+  analogReference(AR_INTERNAL1V65);
+  analogReference(AR_INTERNAL2V23);
+```
