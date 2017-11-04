@@ -228,9 +228,63 @@ Indio.analogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 
 
 ### INTERRUPTS
 
-For using interrupts on the digital channels, the method depends on whether you're using topboard 32u4 or 1286. 
 
-#### INTERRUPTS on the 32u4 topboard
+#### INTERRUPTS on the D21G topboard
+
+The interrupt pin of the expander on the 12/24V digital side is connected to D8 (=INT8) pin of the D21G topboard. This pin will trigger when a change on any of the 8 input or output channels occurs, and we can specify `CHANGE`, `RISING`, `FALLING`, `LOW` (note this pin is inverted: a change from LOW to HIGH on the digital channel triggers `FALLING`). If more than 1 channel needs to be detected by the interrupt, a flag can be set inside the interrupt service routine, and then any pin change can be checked inside the main loop, as discussed in this forum post https://industruino.com/forum/help-1/question/multiple-channels-interrupts-on-32u4-topboard-205
+
+This code example (for D21G topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce), and prints to the Serial Monitor when a membrane button is pressed.
+```
+#include <Indio.h>
+#include <Wire.h>
+
+#include <UC1701.h>
+static UC1701 lcd;
+
+volatile int counter = 0;
+
+void setup() {
+
+  SerialUSB.begin(9600);
+  lcd.begin();
+
+  Indio.digitalMode(1, OUTPUT); //  Clear CH1 to LOW
+  Indio.digitalWrite(1, LOW);  // Clear CH1 to LOW
+  Indio.digitalMode(1, INPUT); // Set CH1 as an input
+
+  attachInterrupt(8, count, FALLING);       // D8 attached to the interrupt of the expander
+
+  attachInterrupt(24, enter, FALLING);      // D24 is the Enter button (pull-up)
+  attachInterrupt(25, up, FALLING);      // D25 is the Up button (pull-up)
+  attachInterrupt(23, down, FALLING);      // D23 is the Down button (pull-up)
+
+}
+
+void count() {
+  SerialUSB.println("trigger");
+  counter++;
+}
+
+void enter() {
+  SerialUSB.println("enter");
+}
+
+void up() {
+  SerialUSB.println("up");
+}
+
+void down() {
+  SerialUSB.println("down");
+}
+
+void loop() {
+  lcd.setCursor(1, 3);
+  lcd.print(counter);
+  delay(100);
+}
+```
+
+#### INTERRUPTS on the legacy 32u4 topboard
 
 The interrupt pin of the expander on the 12/24V digital side is connected to pin D8 (PCINT4) of the 32u4 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs. If more than 1 channel needs to be detected by the interrupt, a flag can be set inside the interrupt service routine, and then any pin change can be checked inside the main loop, as discussed in this forum post https://industruino.com/forum/help-1/question/multiple-channels-interrupts-on-32u4-topboard-205
 
@@ -281,7 +335,7 @@ void loop() {
 }
 ```
 
-#### INTERRUPTS on the 1286 topboard
+#### INTERRUPTS on the legacy 1286 topboard
 
 The interrupt pin of the expander on the 12/24V digital side is connected to the INT7 pin of the 1286 topboard. This pin will trigger when a change on any of the 8 input or output channels occurs, and we can specify `CHANGE`, `RISING`, `FALLING`, `LOW` (note this pin is inverted: a change from LOW to HIGH on the digital channel triggers `FALLING`). If more than 1 channel needs to be detected by the interrupt, a flag can be set inside the interrupt service routine, and then any pin change can be checked inside the main loop, as discussed in this forum post https://industruino.com/forum/help-1/question/multiple-channels-interrupts-on-32u4-topboard-205
 
@@ -358,67 +412,13 @@ void loop() {
   }
 }
 ```
-#### INTERRUPTS on the D21G topboard
-
-The interrupt pin of the expander on the 12/24V digital side is connected to D8 (=INT8) pin of the D21G topboard. This pin will trigger when a change on any of the 8 input or output channels occurs, and we can specify `CHANGE`, `RISING`, `FALLING`, `LOW` (note this pin is inverted: a change from LOW to HIGH on the digital channel triggers `FALLING`). If more than 1 channel needs to be detected by the interrupt, a flag can be set inside the interrupt service routine, and then any pin change can be checked inside the main loop, as discussed in this forum post https://industruino.com/forum/help-1/question/multiple-channels-interrupts-on-32u4-topboard-205
-
-This code example (for D21G topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce), and prints to the Serial Monitor when a membrane button is pressed.
-```
-#include <Indio.h>
-#include <Wire.h>
-
-#include <UC1701.h>
-static UC1701 lcd;
-
-volatile int counter = 0;
-
-void setup() {
-
-  SerialUSB.begin(9600);
-  lcd.begin();
-
-  Indio.digitalMode(1, OUTPUT); //  Clear CH1 to LOW
-  Indio.digitalWrite(1, LOW);  // Clear CH1 to LOW
-  Indio.digitalMode(1, INPUT); // Set CH1 as an input
-
-  attachInterrupt(8, count, FALLING);       // D8 attached to the interrupt of the expander
-
-  attachInterrupt(24, enter, FALLING);      // D24 is the Enter button (pull-up)
-  attachInterrupt(25, up, FALLING);      // D25 is the Up button (pull-up)
-  attachInterrupt(23, down, FALLING);      // D23 is the Down button (pull-up)
-
-}
-
-void count() {
-  SerialUSB.println("trigger");
-  counter++;
-}
-
-void enter() {
-  SerialUSB.println("enter");
-}
-
-void up() {
-  SerialUSB.println("up");
-}
-
-void down() {
-  SerialUSB.println("down");
-}
-
-void loop() {
-  lcd.setCursor(1, 3);
-  lcd.print(counter);
-  delay(100);
-}
-```
 
 ### RS485
 
 RS485 is a popular industrial network standard and the INDIO features a half duplex RS485 transceiver. It is often used with the Modbus protocol, so-called Modbus RTU (as opposed to Modbus TCP which uses Ethernet). The Master unit sends out periodic requests over the network, and Slaves receive and reply.
 
 Hardware specifics for RS485 on the INDIO:
-* Serial connection = Serial1 (does not interfere with 'Serial', which can be used for uploading and Serial Monitor at the same time)
+* Serial connection = Serial (for D21G -- Serial1 on 32u4 and 1286)
 * TxEnablePin = D9
 
 We can use the [SimpleModbusMaster and SimpleModbusSlave libraries](https://drive.google.com/folderview?id=0B0B286tJkafVYnBhNGo4N3poQ2c&usp=drive_web&tid=0B0B286tJkafVSENVcU1RQVBfSzg#list) (versions V2rev2 and V10 respectively) to establish communication over RS485 between 2 or more INDIOs, with one acting as the Master and the other one(s) as the Slave(s). This is one way of expanding the Industruino's number of I/O pins.
