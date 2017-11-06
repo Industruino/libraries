@@ -512,6 +512,9 @@ For AVR watchdogs on the 1286 and 32u4, see [here](https://industruino.com/page/
 The Industruino GSM/GPRS module is based on the SIM800 and can be used with a variety of libraries. We recommend the [TinyGSM](https://github.com/vshymanskyy/TinyGSM) library, and you can find several code examples modified for Industruino [here](https://github.com/Industruino/democode). See the module's user manual for configuration options of the hardware/software serial selector switches.
 
 
+If you want to use the Adafruit FONA library, be aware that the Industruino GSM/GPRS module uses D6 as power on/off pin (it needs 1s HIGH), which is not the same as the Reset pin of the FONA library (pulled LOW for 0.1s in the library).
+
+
 # Modbus
 Modbus is a serial communications protocol popular in industry. It uses a Master/Slave(s) configuration, and comes in 2 types:
 * Modbus RTU: using an RS485 port, available on the Industruino IND.I/O
