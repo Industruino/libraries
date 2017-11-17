@@ -122,7 +122,7 @@ digitalWrite(4, HIGH);
 
 ### IDC pinout
 
-When using the Ethernet module with the Industruino PROTO, it is important to be aware of the I/O pins it is using, and which should not be used for other I/O functions; see below table. The IDC pins can also be used to connect other 5V devices to the PROTO and IND.I/O; they are accessible with standard `pinMode`, `digitalRead` and `digitalWrite` commands (different from the IND.I/O digital I/O channels, see below).
+When using the Ethernet module with the Industruino PROTO, it is important to be aware of the I/O pins it is using, and which should not be used for other I/O functions; see below table. The IDC pins can also be used to connect other 5V devices to the PROTO and IND.I/O; they are accessible with standard `pinMode`, `digitalRead` and `digitalWrite` commands (different from the IND.I/O digital I/O channels, see below). Please note the D21G works at 3.3V: if you need 5V output, use a 10K pull-up resistor. For more details, look [here](https://github.com/Industruino/libraries#proto).
 
 | IDC pin number	| Module function	| Arduino pin	| Default connected	| Required for standard functions |
 | --- | --- | --- | --- | --- |
