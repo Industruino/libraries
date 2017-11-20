@@ -553,7 +553,7 @@ analogWriteResolution(12);
 analogWrite(DAC0, 2048);
 ```
 
-PWM output is available on a range of pins, see the PROTO D21G pinout map.
+PWM output is available on a range of pins (default frequency is 730Hz), see the PROTO D21G pinout map.
 More details at [Arduino reference](https://www.arduino.cc/en/Reference/AnalogWriteResolution).
 
 
