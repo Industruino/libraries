@@ -205,6 +205,8 @@ Please note that the output of the Indio.analogRead() in RAW mode is not of the 
 ##### Important note:   
 #####The analog I/O section is galvanically isolated from the digital I/O section and the microcontroller section, to allow a separate power supply in the analog section for optimal accuracy. In case your analog sensors/actuators are on the same power supply as the digital section (Vin 12/24V) you have to connect the analog GND to the digital GND.
 
+The DAC resolution is 12 bits.
+
 Configuration of output mode:
 ```
 Indio.analogWriteMode(1, V10);      // Set Analog-Out CH1 to 10V mode (0-10V).
