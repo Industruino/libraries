@@ -130,16 +130,16 @@ When using the Ethernet module with the Industruino PROTO, it is important to be
 | 2	| +5V	| +5V	| yes	| yes |
 | 3	| SCLK	| D15/SCLK	| yes	| yes |
 | 4	| MOSI	| D16/MOSI	| yes	| yes |
-| 5	| Ethernet CS (Serial1 RX)	| D10/RX1	| yes	| yes |
+| 5	| Ethernet CS	| D10/RX1	(Serial1) | yes	| yes |
 | 6	| GND	| GND	| yes	| yes |
 | 7	| SD CS	| D4	| yes	| yes |
-| 8	| Ethernet ext reset	(Serial1 TX)| D5/TX1	| no	| no |
+| 8	| Ethernet ext reset	| D5/TX1	(Serial1) | no	| no |
 | 9	| Ethernet IRQ	| D7	| yes	| no |
 | 10	| FRAM CS	| D6	| yes	| yes |
-| 11	| Serial RX	| D0/RX	| PROTO: no <br> IND.I/O: yes | PROTO: no <br> IND.I/O: used by RS485|
-| 12	| Serial TX	| D1/TX	| PROTO: no	<br> IND.I/O: yes | PROTO: no <br> IND.I/O: used by RS485|
-| 13	| I2C SDA	| D2/SDA	| PROTO: no	<br> IND.I/O: yes | PROTO: no <br> IND.I/O: used for I2C|
-| 14	| I2C	SCL | D3/SCL |	PROTO: no	<br> IND.I/O: yes | PROTO: no <br> IND.I/O: used for I2C|
+| 11	| /	| D0/RX	(Serial) | PROTO: no <br> IND.I/O: yes | PROTO: no <br> IND.I/O: used by RS485|
+| 12	| /	| D1/TX	(Serial) | PROTO: no	<br> IND.I/O: yes | PROTO: no <br> IND.I/O: used by RS485|
+| 13	| /	| D2/SDA	| PROTO: no	<br> IND.I/O: yes | PROTO: no <br> IND.I/O: used for I2C|
+| 14	| / | D3/SCL |	PROTO: no	<br> IND.I/O: yes | PROTO: no <br> IND.I/O: used for I2C|
 
 
 # Indio
