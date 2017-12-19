@@ -133,7 +133,7 @@ When using the Ethernet module with the Industruino PROTO, it is important to be
 | 5	| Ethernet CS	| D10/RX1	(Serial1) | yes	| yes |
 | 6	| GND	| GND	| yes	| yes |
 | 7	| SD CS	| D4	| yes	| yes |
-| 8	| Ethernet ext reset	| D5/TX1	(Serial1) | no	| no |
+| 8	| Ethernet ext reset	| D5/TX1	(Serial1) | yes	| no |
 | 9	| Ethernet IRQ	| D7	| yes	| no |
 | 10	| FRAM CS	| D6	| yes	| yes |
 | 11	| /	| D0/RX	(Serial) | PROTO: no <br> IND.I/O: yes | PROTO: no <br> IND.I/O: used by RS485|
