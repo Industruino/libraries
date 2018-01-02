@@ -136,10 +136,10 @@ When using the Ethernet module with the Industruino PROTO, it is important to be
 | 8	| Ethernet ext reset	| D5/TX1	(Serial1) | yes	| no |
 | 9	| Ethernet IRQ	| D7	| yes	| no |
 | 10	| FRAM CS	| D6	| yes	| yes |
-| 11	| /	| D0/RX	(Serial) | PROTO: no <br> IND.I/O: yes | PROTO: no <br> IND.I/O: used by RS485|
-| 12	| /	| D1/TX	(Serial) | PROTO: no	<br> IND.I/O: yes | PROTO: no <br> IND.I/O: used by RS485|
-| 13	| /	| D2/SDA	| PROTO: no	<br> IND.I/O: yes | PROTO: no <br> IND.I/O: used for I2C|
-| 14	| / | D3/SCL |	PROTO: no	<br> IND.I/O: yes | PROTO: no <br> IND.I/O: used for I2C|
+| 11	| /	| D0/RX	(Serial) | PROTO: no <br> IND.I/O: depends on switch position | PROTO: no <br> IND.I/O: RS485/IDC|
+| 12	| /	| D1/TX	(Serial) | PROTO: no	<br> IND.I/O: depends on switch position | PROTO: no <br> IND.I/O: RS485/IDC|
+| 13	| /	| D2/SDA	| PROTO: no	<br> IND.I/O: yes | used for I2C RTC|
+| 14	| / | D3/SCL |	PROTO: no	<br> IND.I/O: yes | used for I2C RTC|
 
 
 # Indio
