@@ -420,8 +420,10 @@ void loop() {
 RS485 is a popular industrial network standard and the INDIO features a half duplex RS485 transceiver. It is often used with the Modbus protocol, so-called Modbus RTU (as opposed to Modbus TCP which uses Ethernet). The Master unit sends out periodic requests over the network, and Slaves receive and reply.
 
 Hardware specifics for RS485 on the INDIO:
-* Serial connection = Serial (for D21G -- Serial1 on 32u4 and 1286)
+* Serial connection = Serial (on the current D21G, Serial1 on old 32u4 and 1286 topboards)
 * TxEnablePin = D9
+
+Note: the current IND.I/O baseboards have a hardware switch to connect/disconnect the RS485 port and the Serial port (D0/D1). To use the RS485, this switch should be in the bottom position (towards the RS485 terminals).
 
 We can use the [SimpleModbusMaster and SimpleModbusSlave libraries](https://drive.google.com/folderview?id=0B0B286tJkafVYnBhNGo4N3poQ2c&usp=drive_web&tid=0B0B286tJkafVSENVcU1RQVBfSzg#list) (versions V2rev2 and V10 respectively) to establish communication over RS485 between 2 or more INDIOs, with one acting as the Master and the other one(s) as the Slave(s). This is one way of expanding the Industruino's number of I/O pins.
 
