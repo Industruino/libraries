@@ -425,6 +425,8 @@ Hardware specifics for RS485 on the INDIO:
 
 Note: the current IND.I/O baseboards have a hardware switch to connect/disconnect the RS485 port and the Serial port (D0/D1). To use the RS485, this switch should be in the bottom position (towards the RS485 terminals).
 
+Note: the INDIO board has 3 jumpers for RS485 termination resistors, for details see [https://industruino.com/blog/our-news-1/post/modbus-rtu-master-and-slave-14](here).
+
 We can use the [SimpleModbusMaster and SimpleModbusSlave libraries](https://drive.google.com/folderview?id=0B0B286tJkafVYnBhNGo4N3poQ2c&usp=drive_web&tid=0B0B286tJkafVSENVcU1RQVBfSzg#list) (versions V2rev2 and V10 respectively) to establish communication over RS485 between 2 or more INDIOs, with one acting as the Master and the other one(s) as the Slave(s). This is one way of expanding the Industruino's number of I/O pins.
 
 Basic configuration of the above Modbus RTU libraries:
