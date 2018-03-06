@@ -233,11 +233,11 @@ Indio.analogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 
 
 #### INTERRUPTS on the D21G topboard
 
-The interrupt pin of the expander on the 12/24V digital side is connected to D8 (=INT8) pin of the D21G topboard. This pin will trigger when a change on any of the 8 input or output channels occurs, and we can specify `CHANGE`, `RISING`, `FALLING`, `LOW`. Note this pin is inverted: a change from LOW to HIGH on the digital channel triggers `FALLING`; if you use pull-up resistors on your input channel, you want to trigger from HIGH to LOW so you have to use `RISING`. 
+The interrupt pin of the expander on the 12/24V digital side is connected to D8 (=INT8) pin of the D21G topboard. This pin will trigger when a change on any of the 8 input or output channels occurs, both edges (rising and falling). 
 
 If more than 1 channel needs to be detected by the interrupt, a flag can be set inside the interrupt service routine, and then any pin change can be checked inside the main loop, as discussed in this forum post https://industruino.com/forum/help-1/question/multiple-channels-interrupts-on-32u4-topboard-205
 
-This code example (for D21G topboard) shows a counter on the LCD for each rising edge on CH1 (without debounce), and prints to the Serial Monitor when a membrane button is pressed. Please note it is not good practice to use Serial prints in ISRs - this is for demo only.
+This code example (for D21G topboard) shows a counter on the LCD for each edge on CH1 (without debounce), and prints to the Serial Monitor when a membrane button is pressed. Please note it is not good practice to use Serial prints in ISRs - this is for demo only.
 ```
 #include <Indio.h>
 #include <Wire.h>
