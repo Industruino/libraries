@@ -440,19 +440,19 @@ Basic configuration of the above Modbus RTU libraries:
 // used to toggle the receive/transmit pin on the driver
 #define TxEnablePin 9                                                           // INDUSTRUINO RS485
 
-modbus_configure(&Serial1, baud, SERIAL_8N2, timeout, polling, retry_count, TxEnablePin, packets, TOTAL_NO_OF_PACKETS, regs);
+modbus_configure(&Serial, baud, SERIAL_8N2, timeout, polling, retry_count, TxEnablePin, packets, TOTAL_NO_OF_PACKETS, regs);
 ```
 For more information see the examples on our blog, e.g. [Modbus RTU between 2 INDIOs](https://industruino.com/blog/our-news-1/post/modbus-rtu-master-and-slave-14).
 
 ### CALIBRATION
 
-Please find the calibration data array inside the Indio.cpp library file (as below), together with this explanation on how to perform the calibration. The library is preloaded with calibration data but characteristics are board specific thus reading with standard calibration data might be off. You are advised to update the calibration arrays in your own Indio.cpp file.
+Please find the calibration data array inside the Indio.cpp library file (as below), together with this explanation on how to perform the calibration. The library is preloaded with calibration data but characteristics are board specific thus reading with standard calibration data might be off. You are advised to update the calibration arrays in your own Indio.cpp file. We provide a sketch to assist with this [here](https://github.com/Industruino/Indio/tree/master/examples/Indio_AnalogCalibration).
 
 Analog Calibration method:
 * Analog IN, 0-10V: In your sketch set the analogReadMode to V10_raw. Feed a known voltage between 0-10V into 1 of the 4 input channels. Read the corresponding raw ADC value from the serial terminal and write it down. Do this at two voltage levels, for example 2.5V and 7.5V. Enter the recorded raw ADC value and corresponding voltage (in mV) into the calibration array below. Repeat this for all 4 channels.
-* Analog IN, 4-20mA: In your sketch set the analogReadMode to mA_raw. Feed a known current between 0-20mA into 1 of the 4 input channels. Read the corresponding raw ADC value from the serial terminal and write it down. Do this at two current levels, for example **10000uA and 20000uA**. Enter the recorded raw ADC value and corresponding voltage (in uA) into the calibration array below. Repeat this for all 4 channels. As a current source you can for example use a **500 Ohm** resistor in series with a 0-20V voltage source and multimeter in series.
+* Analog IN, 4-20mA: In your sketch set the analogReadMode to mA_raw. Feed a known current between 0-20mA into 1 of the 4 input channels. Read the corresponding raw ADC value from the serial terminal and write it down. Do this at two current levels, for example 10000uA and 20000uA. Enter the recorded raw ADC value and corresponding voltage (in uA) into the calibration array below. Repeat this for all 4 channels. As a current source you can for example use a 500 Ohm resistor in series with a 0-20V voltage source and multimeter in series.
 * Analog OUT, 0-10V: In your sketch set the analogWriteMode to V10_raw. Set the analogWrite value to anything between 0-4096. Read the corresponding output voltage on a multimeter and write it down. Do this at two DAC output values, for example 1000 and 3600. Enter the recorded raw DAC value and corresponding voltage (in mV) into the calibration array below. Repeat this for all 2 channels.
-* Analog OUT, **4-20mA**: In your sketch set the analogWriteMode to mA_raw. Set the analogWrite value to anything between 0-4096. Read the corresponding output current on a multimeter (connect multimeter between output and ground, best with a 100-500 Ohm resistor in series) and write it down. Do this at two DAC output values, for example 1000 and 3600. Enter the recorded raw DAC value and corresponding current (in uA) into the calibration array below. Repeat this for all 2 channels.
+* Analog OUT, 4-20mA: In your sketch set the analogWriteMode to mA_raw. Set the analogWrite value to anything between 0-4096. Read the corresponding output current on a multimeter (connect multimeter between output and ground, best with a 100-500 Ohm resistor in series) and write it down. Do this at two DAC output values, for example 1000 and 3600. Enter the recorded raw DAC value and corresponding current (in uA) into the calibration array below. Repeat this for all 2 channels.
 
 ```
 //Calibration data array for ADC, 0-10V mode
