@@ -176,7 +176,7 @@ Indio.digitalWrite(7,LOW);        // Set CH7 to low (0V)
 ##### Important note:    
 ##### The analog I/O section is galvanically isolated from the digital I/O section and the microcontroller section, to allow a separate power supply in the analog section for optimal accuracy. In case your analog sensors/actuators are on the same power supply as the digital section (Vin 12/24V) you have to connect the analog GND to the digital GND.
 
-Configuration of resolution:
+Configuration of resolution (to be done BEFORE configuration of the input mode):
 ```
 Indio.setADCResolution(16);       // Set the ADC resolution
                                   // Choices are 12bit@240SPS, 14bit@60SPS, 16bit@15SPS and 18bit@3.75SPS.
@@ -194,6 +194,10 @@ Indio.analogReadMode(1, mA);      // Set Analog-In CH1 to mA mode (0-20mA).
 Indio.analogReadMode(1, mA_p);    // Set Analog-In CH1 to % mA mode (4-20mA -> 0-100%)
 Indio.analogReadMode(1, mA_raw);  // Set Analog-In CH1 to mA mode and read raw ADC value (0-20mA -> 0-4096).
 ```  
+
+Note: if you want to change the resolution in your program, you have to repeat the above input mode configuration after changing the resolution.
+
+
 Read:
 ```
 Indio.analogRead(1);              //Read Analog-In CH1 (output depending on selected mode as above)
