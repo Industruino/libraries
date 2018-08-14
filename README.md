@@ -437,7 +437,7 @@ We can use the [SimpleModbusMaster and SimpleModbusSlave libraries](https://driv
 
 Basic configuration of the above Modbus RTU libraries:
 ```
-#define baud       115200   // tested 9600 to 115200
+#define baud       9600   // use 9600 on D21G, higher rates may not work
 #define timeout    1000
 #define polling    20    // the scan rate
 #define retry_count 10
