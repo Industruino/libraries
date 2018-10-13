@@ -82,6 +82,9 @@ U8G2_UC1701_MINI12864_F_4W_HW_SPI u8g2(U8G2_R2, /* cs=*/ 19, /* dc=*/ 22);
 If you have the D21G Topboard please use Industruino version of the [Ethernet2 library](https://github.com/Industruino/Ethernet2). This is a fork of the original Ethernet2, with one important change: the SPI speed is set to 4MHz in this [file, line 25](https://github.com/Industruino/Ethernet2/blob/master/src/utility/w5500.cpp).
 
 
+For a unique MAC-address, you can use the EUI-64 number stored in the D21G's RTC (MCP79402), for an example see this [sketch](https://github.com/Industruino/democode/blob/master/MACfromRTC/MACfromRTC.ino).
+
+
 If you are using the Industruino Ethernet module with 32u4 or 1286 Topboard use our [EthernetIndustruino library](https://github.com/Industruino/EthernetIndustruino). 
 Both libraries are based on the standard Arduino Ethernet library and support all same commands. The Ethernet module is connected over SPI, so we also need the SPI library.
 
@@ -497,7 +500,7 @@ const int DAC_current_high_uA[3] = {0,19530,19530}; //corresponding uA for high 
 
 
 # RTC
-Industruinos with the D21G topboard have a built-in RTC (MCP79402 with I2C 0x57 and 0x6F) that can be used with this [library](https://github.com/Industruino/MCP7940-RTC-Library). A simple example that displays the date and time on the LCD can be found [here](https://github.com/Industruino/democode/blob/master/rtc_D21G/rtc_D21G.ino).
+Industruinos with the D21G topboard have a built-in RTC (MCP79402 with I2C 0x57 and 0x6F) that can be used with this [library](https://github.com/Industruino/MCP7940-RTC-Library). A simple example that displays the date and time on the LCD can be found [here](https://github.com/Industruino/democode/blob/master/rtc_D21G/rtc_D21G.ino). The RTC also contains a unique 8-byte number (EUI-64) that can be used as a MAC address, see above in the Ethernet section.
 
 
 # EEPROM
