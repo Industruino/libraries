@@ -173,6 +173,10 @@ Read/write:
 Indio.digitalRead(1);             // Read CH1
 Indio.digitalWrite(7,LOW);        // Set CH7 to low (0V)
 ```
+Notes: 
+* INPUT logic HIGH voltage is >11V and logic LOW is <3V
+* INPUT maximum trigger frequency is 10kHz (see below for interrupts)
+* OUTPUT maximum switching frequency is 400Hz
 
 ### ANALOG INPUT
 
