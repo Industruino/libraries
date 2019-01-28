@@ -245,7 +245,11 @@ Indio.analogWrite(1, 2048, true);   //Set CH1 DAC to integer value 2048 (approx 
 
 #### INTERRUPTS on the D21G topboard
 
-The interrupt pin of the expander on the 12/24V digital side is connected to D8 (=INT8) pin of the D21G topboard. This pin will trigger when a change on any of the 8 input or output channels occurs, both edges (rising and falling). 
+The interrupt pin of the expander on the 12/24V digital side is connected to D8 (=INT8) pin of the D21G topboard. This pin will trigger when a change on any of the 8 input or output channels occurs. By default all input channels have this interrupt enabled. However, this can be configured per channel:
+```
+Indio.digitalMode(1, INPUT);         // default behaviour: interrupt enabled
+Indio.digitalMode(2, INPUT_MASKED);  // pin change will not trigger the general interrupt
+```
 
 If more than 1 channel needs to be detected by the interrupt, a flag can be set inside the interrupt service routine, and then any pin change can be checked inside the main loop, as discussed in this forum post https://industruino.com/forum/help-1/question/multiple-channels-interrupts-on-32u4-topboard-205
 
